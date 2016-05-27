@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noEmit": true
+  },
+  "files": [
+    "test.ts",
+    "../out/main.d.ts",
+    "../../1.2/out/main.d.ts"
+  ]
+}

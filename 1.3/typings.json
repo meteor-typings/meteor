@@ -1,0 +1,26 @@
+{
+  "name": "meteor",
+  "version": "1.3",
+  "homepage": "https://meteor.com",
+  "files": [
+    "accounts-base.d.ts",
+    "blaze.d.ts",
+    "browser-policy.d.ts",
+    "check.d.ts",
+    "ddp.d.ts",
+    "ejson.d.ts",
+    "email.d.ts",
+    "http.d.ts",
+    "meteor.d.ts",
+    "mongo.d.ts",
+    "random.d.ts",
+    "reactive-var.d.ts",
+    "session.d.ts",
+    "templating.d.ts",
+    "tiny-test.d.ts",
+    "tracker.d.ts"
+  ],
+  "ambientDependencies": {
+    "meteor": "github:meteor-typings/meteor/1.2"
+  }
+}

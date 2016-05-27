@@ -1,0 +1,26 @@
+{
+  "name": "meteor",
+  "version": "1.2",
+  "main": "server.d.ts",
+  "browser": "client.d.ts",
+  "homepage": "https://meteor.com",
+  "ambient": true,
+  "files": [
+    "packages/accounts-base.d.ts",
+    "packages/blaze.d.ts",
+    "packages/browser-policy.d.ts",
+    "packages/check.d.ts",
+    "packages/ddp.d.ts",
+    "packages/ejson.d.ts",
+    "packages/email.d.ts",
+    "packages/http.d.ts",
+    "packages/meteor.d.ts",
+    "packages/mongo.d.ts",
+    "packages/random.d.ts",
+    "packages/reactive-var.d.ts",
+    "packages/session.d.ts",
+    "packages/templating.d.ts",
+    "packages/tiny-test.d.ts",
+    "packages/tracker.d.ts"
+  ]
+}
