@@ -21,6 +21,6 @@
     "tracker.d.ts"
   ],
   "ambientDependencies": {
-    "meteor": "github:meteor-typings/meteor/1.2"
+    "meteor": "github:meteor-typings/meteor/1.2#b9ea9ecc04b54b8d07fa02b470b02af9c3b747a0"
   }
 }
