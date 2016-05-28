@@ -10,5 +10,5 @@ Content of the modules are the same as in 1.2v.
 In order to build all typings run `gulp build`.
 
 `1.2` and `1.3` share same Meteor core packages typings, which are located in `1.2/packages`.
-Typings from `1.2` are being copied to the `1.3` folder when you run `gulp 1_3` in order to build new Meteor 1.3 namespaces.
+Typings from `1.2/packages` folder are being copied to the `1.3` folder when you run `gulp 1_3` in order to build new Meteor 1.3 namespaces.
 
