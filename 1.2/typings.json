@@ -4,7 +4,6 @@
   "main": "server.d.ts",
   "browser": "client.d.ts",
   "homepage": "https://meteor.com",
-  "ambient": true,
   "files": [
     "packages/accounts-base.d.ts",
     "packages/blaze.d.ts",
