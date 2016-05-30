@@ -1,4 +1,3 @@
-
 declare module Match {
   var Any: any;
   var String: any;

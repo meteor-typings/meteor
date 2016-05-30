@@ -1,3 +1,5 @@
+/// <reference path="meteor.d.ts" />
+
 declare module DDP {
   interface DDPStatic {
     subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;

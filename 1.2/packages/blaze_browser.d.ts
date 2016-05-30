@@ -1,3 +1,5 @@
+/// <reference path="meteor.d.ts" />
+
 declare module Blaze {
   var View: ViewStatic;
 
