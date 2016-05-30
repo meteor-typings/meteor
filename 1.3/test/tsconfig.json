@@ -5,7 +5,6 @@
   },
   "files": [
     "test.ts",
-    "../out/main.d.ts",
-    "../../1.2/out/main.d.ts"
+    "../out/main.d.ts"
   ]
 }

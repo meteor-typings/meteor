@@ -13,6 +13,8 @@
     "typings": "^0.8.1",
     "gulp": "^3.9.1",
     "run-sequence": "^1.1.5",
-    "gulp-replace": "^0.5.4"
+    "gulp-replace": "^0.5.4",
+    "gulp-change": "^1.0.0",
+    "js-beautify": "^1.6.2"
   }
 }

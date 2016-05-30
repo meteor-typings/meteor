@@ -2,9 +2,11 @@
   "name": "meteor",
   "version": "1.2",
   "main": "server.d.ts",
-  "browser": "client.d.ts",
+  "browser": "header.d.ts",
   "homepage": "https://meteor.com",
+  "ambient": true,
   "files": [
+    "header.d.ts",
     "packages/accounts-base.d.ts",
     "packages/blaze.d.ts",
     "packages/browser-policy.d.ts",
