@@ -23,12 +23,12 @@ multiple registers including [DefinitelyTyped](https://github.com/DefinitelyType
 For example, if you want to install NodeJS typings, try: `typigns install registry:env/node --ambient`.
 
 To find out if there is any typings for a particular library or NPM, use `typings search ...`.
+For more information, please read [here](https://github.com/typings/typings).
 
-If you could try to copy&paste `typings.json` file located at the root of this repo.
-It is supposed to contain major typings Meteor depends on.
-After copying, execute `typings isntall`.
+You could try also to copy&paste `typings.json` file located at the root of this repo to your app.
+It is supposed to contain major typings Meteor depends on. After copying, execute `typings install`.
 
-If you want to install some Atmosphere package's typings, search for an appropriate repo in
-[`meteor-typings`](https://github.com/eteor-typings) organization, which is supposed to contain all available typings of such type.
+If you want to install some Atmosphere package's typings, search for an appropriate repo in the current
+[`meteor-typings`](https://github.com/meteor-typings) organization, which is supposed to contain all available typings of such type.
 If you find that package's typings repo, go inside and read how to install typings.
 If not - you are very welcome to create new repo and contribute typings.
