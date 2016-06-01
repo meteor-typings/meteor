@@ -20,9 +20,12 @@ For more information, please read [here](https://github.com/typings/typings).
 You could try also to copy&paste `typings.json` file located at the root of this repo to your app.
 It is supposed to contain major typings Meteor depends on. After copying, execute `typings install`.
 
+### Atmosphere packages
+
 If you want to install some Atmosphere package's typings, search for an appropriate repo in the current
 [`meteor-typings`](https://github.com/meteor-typings) organization, which is supposed to contain all available typings of such type.
-If you find that package's typings repo, go inside and read how to install typings.
+
+If you have found that package's typings repo, go inside and read how to install typings.
 If not - you are very welcome to create new repo and contribute typings.
 
 ## Development
