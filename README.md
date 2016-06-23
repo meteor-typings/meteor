@@ -1,4 +1,4 @@
-## Typings for Meteor
+## Typings for Meteor [![Build Status](https://travis-ci.org/meteor-typings/meteor.svg?branch=master)](https://travis-ci.org/meteor-typings/meteor)
 
 1.2v: ambient Meteor typings, i.e., defines modules like `Meteor`, `Mongo` etc.
 
