@@ -608,9 +608,18 @@ declare module DDP {
     onReconnect(): void;
   }
 
+  function _allSubscriptionsReady(): boolean;
+
   interface DDPStatus {
     connected: boolean;
-    status: Meteor.StatusEnum;
+    /**
+     * connected,
+     * connecting,
+     * failed,
+     * waiting,
+     * offline
+     */
+    status: string;
     retryCount: number;
     retryTime ? : number;
     reason ? : string;
@@ -644,9 +653,18 @@ declare module "meteor/ddp" {
       onReconnect(): void;
     }
 
+    function _allSubscriptionsReady(): boolean;
+
     interface DDPStatus {
       connected: boolean;
-      status: Meteor.StatusEnum;
+      /**
+       * connected,
+       * connecting,
+       * failed,
+       * waiting,
+       * offline
+       */
+      status: string;
       retryCount: number;
       retryTime ? : number;
       reason ? : string;
@@ -1195,7 +1213,7 @@ declare module Meteor {
   /** Connection **/
 
   /** Status **/
-  function status(): Meteor.StatusEnum;
+  function status(): DDP.DDPStatus;
   /** Status **/
 
   /** Pub/Sub **/
@@ -1278,7 +1296,7 @@ declare module "meteor/meteor" {
     /** Connection **/
 
     /** Status **/
-    function status(): Meteor.StatusEnum;
+    function status(): DDP.DDPStatus;
     /** Status **/
 
     /** Pub/Sub **/

@@ -59,7 +59,7 @@ declare module Meteor {
   /** Connection **/
 
   /** Status **/
-  function status(): Meteor.StatusEnum;
+  function status(): DDP.DDPStatus;
   /** Status **/
 
   /** Pub/Sub **/

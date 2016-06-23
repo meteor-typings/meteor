@@ -12,9 +12,18 @@ declare module DDP {
     onReconnect(): void;
   }
 
+  function _allSubscriptionsReady(): boolean;
+
   interface DDPStatus {
     connected: boolean;
-    status: Meteor.StatusEnum;
+    /**
+     * connected,
+     * connecting,
+     * failed,
+     * waiting,
+     * offline
+     */
+    status: string;
     retryCount: number;
     retryTime?: number;
     reason?: string;

@@ -99,6 +99,10 @@ Tracker.autorun(function () {
   Meteor.subscribe("counts-by-room", Session.get("roomId"));
 });
 
+// Checking status
+let status: string = Meteor.status().status;
+console.log(status);
+
 console.log("Current room has " +
     Counts.find(Session.get("roomId")).count +
     " messages.");
