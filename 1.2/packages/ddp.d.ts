@@ -14,16 +14,11 @@ declare module DDP {
 
   function _allSubscriptionsReady(): boolean;
 
+  type Status = 'connected' | 'connecting' | 'failed' | 'waiting' | 'offline';
+
   interface DDPStatus {
     connected: boolean;
-    /**
-     * connected,
-     * connecting,
-     * failed,
-     * waiting,
-     * offline
-     */
-    status: string;
+    status: Status;
     retryCount: number;
     retryTime?: number;
     reason?: string;

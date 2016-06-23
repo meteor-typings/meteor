@@ -100,8 +100,7 @@ Tracker.autorun(function () {
 });
 
 // Checking status
-let status: string = Meteor.status().status;
-console.log(status);
+let status: DDP.Status = 'connected';
 
 console.log("Current room has " +
     Counts.find(Session.get("roomId")).count +
