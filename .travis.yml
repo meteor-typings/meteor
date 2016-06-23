@@ -1,1 +1,1 @@
-script: npm install && npm test
+script: npm install && npm run build+test

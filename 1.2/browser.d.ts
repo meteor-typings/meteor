@@ -476,16 +476,6 @@ declare module Meteor {
   function wrapAsync(func: Function, context?: Object): any;
   /** utils **/
 
-  /** Status **/
-  enum StatusEnum {
-    connected,
-    connecting,
-    failed,
-    waiting,
-    offline
-  }
-  /** Status **/
-
   /** Pub/Sub **/
   interface SubscriptionHandle {
     stop(): void;
