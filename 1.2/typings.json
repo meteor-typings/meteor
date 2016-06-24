@@ -4,8 +4,12 @@
   "main": "main.d.ts",
   "browser": "browser.d.ts",
   "homepage": "https://meteor.com",
-  "ambient": true,
+  "global": true,
   "files": [
     "header.d.ts"
-  ]
+  ],
+  "resolution": {
+    "main": "typings/main",
+    "browser": "typings/browser"
+  }
 }
