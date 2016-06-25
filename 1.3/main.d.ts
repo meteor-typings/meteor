@@ -1497,7 +1497,7 @@ declare module "meteor/mongo" {
       }, callback ? : Function): {
         numberAffected ? : number;insertedId ? : string;
       };
-      _ensureIndex(keys: {[key: string]: number}, options ? : {
+      _ensureIndex(keys: { [key: string]: number }, options ? : {
         [key: string]: any
       }): void;
     }
