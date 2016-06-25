@@ -1393,7 +1393,7 @@ declare module Mongo {
     }, callback ? : Function): {
       numberAffected ? : number;insertedId ? : string;
     };
-    _ensureIndex(keys: {[key: string]: number}, options ? : {
+    _ensureIndex(keys: { [key: string]: number }, options ? : {
       [key: string]: any
     }): void;
   }
