@@ -638,7 +638,7 @@ declare module Mongo {
     upsert(selector: Selector | ObjectID | string, modifier: Modifier, options?: {
       multi?: boolean;
     }, callback?: Function): { numberAffected?: number; insertedId?: string; };
-    _ensureIndex(keys: { [key: string]: number | string }, options?: { [key: string]: any }): void;
+    _ensureIndex(keys: { [key: string]: number | string } | string, options?: { [key: string]: any }): void;
   }
 
   var Cursor: CursorStatic;
