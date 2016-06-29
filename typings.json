@@ -5,5 +5,10 @@
     "node-fibers": "registry:dt/node-fibers#0.0.0+20160317120654",
     "promise": "registry:dt/promise#7.1.1+20160316171810",
     "meteor-promise": "github:meteor-typings/meteor-promise#6df69b4bee095332dc0105bd9e31e6e7fcc174db"
+  },
+  "resolution": {
+    "main": "typings/main",
+    "browser": "typings/browser"
   }
 }
+
