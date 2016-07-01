@@ -6,6 +6,7 @@ declare module Meteor {
   var isClient: boolean;
   var isCordova: boolean;
   var isServer: boolean;
+  var isProduction: boolean;
   var release: string;
   var settings: { [id: string]: any };
   /** props **/
