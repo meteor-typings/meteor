@@ -689,3 +689,8 @@ var handle = Accounts.validateLoginAttempt(function(attemptInfoObject: Accounts.
 });
 handle.stop();
 
+
+const publicSetting = Meteor.settings.public['somePublicSetting'];
+const deeperPublicSetting = Meteor.settings.public['somePublicSetting']['deeperSetting'];
+const privateSetting = Meteor.settings['somePrivateSetting'];
+const deeperPrivateSetting = Meteor.settings['somePrivateSettings']['deeperSetting'];

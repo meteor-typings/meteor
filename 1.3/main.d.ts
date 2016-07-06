@@ -931,9 +931,12 @@ declare module Meteor {
   var isProduction: boolean;
   var release: string;
   var settings: {
+    public: {
+      [id: string]: any
+    },
     [id: string]: any
   };
-  /** props **/
+  /** Global props **/
 
   /** User **/
   interface UserEmail {
@@ -1027,9 +1030,12 @@ declare module "meteor/meteor" {
     var isProduction: boolean;
     var release: string;
     var settings: {
+      public: {
+        [id: string]: any
+      },
       [id: string]: any
     };
-    /** props **/
+    /** Global props **/
 
     /** User **/
     interface UserEmail {
@@ -1395,7 +1401,9 @@ declare module Mongo {
     }, callback ? : Function): {
       numberAffected ? : number;insertedId ? : string;
     };
-    _ensureIndex(keys: { [key: string]: number | string } | string, options ? : {
+    _ensureIndex(keys: {
+      [key: string]: number | string
+    } | string, options ? : {
       [key: string]: any
     }): void;
   }
@@ -1499,7 +1507,9 @@ declare module "meteor/mongo" {
       }, callback ? : Function): {
         numberAffected ? : number;insertedId ? : string;
       };
-      _ensureIndex(keys: { [key: string]: number | string } | string, options ? : {
+      _ensureIndex(keys: {
+        [key: string]: number | string
+      } | string, options ? : {
         [key: string]: any
       }): void;
     }

@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "noEmit": true
+    "noEmit": true,
+    "noImplicitAny": true
   },
   "files": [
     "test.ts",

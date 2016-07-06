@@ -409,8 +409,11 @@ declare module Meteor {
   var isServer: boolean;
   var isProduction: boolean;
   var release: string;
-  var settings: { [id: string]: any };
-  /** props **/
+  var settings: {
+    public: {[id:string]: any},
+    [id:string]: any
+  };
+  /** Global props **/
 
   /** User **/
   interface UserEmail {
