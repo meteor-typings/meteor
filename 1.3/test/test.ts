@@ -690,7 +690,17 @@ var handle = Accounts.validateLoginAttempt(function(attemptInfoObject: Accounts.
 handle.stop();
 
 
+// Covers https://github.com/meteor-typings/meteor/issues/8
 const publicSetting = Meteor.settings.public['somePublicSetting'];
 const deeperPublicSetting = Meteor.settings.public['somePublicSetting']['deeperSetting'];
 const privateSetting = Meteor.settings['somePrivateSetting'];
 const deeperPrivateSetting = Meteor.settings['somePrivateSettings']['deeperSetting'];
+
+
+// Covers https://github.com/meteor-typings/meteor/issues/9
+const username = (<HTMLInputElement> Template.instance().find('#username')).value;
+
+
+// Covers https://github.com/meteor-typings/meteor/issues/3
+// BrowserPolicy.framing.disallow();
+// BrowserPolicy.content.allowEval();

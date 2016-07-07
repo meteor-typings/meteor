@@ -320,8 +320,8 @@ declare module Blaze {
     renderFunction: Function;
     constructView(): View;
     head: Template;
-    find(selector: string): Template;
-    findAll(selector: string): Template[];
+    find(selector: string): HTMLElement;
+    findAll(selector: string): HTMLElement[];
     $: any;
     onCreated(cb: Function): void;
     onRendered(cb: Function): void;
@@ -343,8 +343,8 @@ declare module Blaze {
     $(selector: string): any;
     autorun(runFunc: Function): Object;
     data: Object;
-    find(selector ? : string): TemplateInstance;
-    findAll(selector: string): TemplateInstance[];
+    find(selector: string): HTMLElement;
+    findAll(selector: string): HTMLElement[];
     firstNode: Object;
     lastNode: Object;
     subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
@@ -431,8 +431,8 @@ declare module "meteor/blaze" {
       renderFunction: Function;
       constructView(): View;
       head: Template;
-      find(selector: string): Template;
-      findAll(selector: string): Template[];
+      find(selector: string): HTMLElement;
+      findAll(selector: string): HTMLElement[];
       $: any;
       onCreated(cb: Function): void;
       onRendered(cb: Function): void;
@@ -454,8 +454,8 @@ declare module "meteor/blaze" {
       $(selector: string): any;
       autorun(runFunc: Function): Object;
       data: Object;
-      find(selector ? : string): TemplateInstance;
-      findAll(selector: string): TemplateInstance[];
+      find(selector: string): HTMLElement;
+      findAll(selector: string): HTMLElement[];
       firstNode: Object;
       lastNode: Object;
       subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
