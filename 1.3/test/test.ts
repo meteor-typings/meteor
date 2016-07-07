@@ -702,5 +702,5 @@ const username = (<HTMLInputElement> Template.instance().find('#username')).valu
 
 
 // Covers https://github.com/meteor-typings/meteor/issues/3
-// BrowserPolicy.framing.disallow();
-// BrowserPolicy.content.allowEval();
+BrowserPolicy.framing.disallow();
+BrowserPolicy.content.allowEval();

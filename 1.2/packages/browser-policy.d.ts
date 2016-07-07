@@ -1,11 +1,11 @@
 declare module BrowserPolicy {
-  interface framing {
+  var framing: {
     disallow(): void;
     restrictToOrigin(origin: string): void;
     allowAll(): void;
-  }
+  };
 
-  interface content {
+  var content: {
     allowEval(): void;
     allowInlineStyles(): void;
     allowInlineScripts(): void;
@@ -26,5 +26,5 @@ declare module BrowserPolicy {
     disallowFont(): void;
     disallowObject(): void;
     disallowAllContent(): void;
-  }
+  };
 }
