@@ -352,6 +352,8 @@ var handle = query.observeChanges({
   }
 });
 
+let cursor: Mongo.Cursor<Object>;
+
 // After five seconds, stop keeping the count.
 setTimeout(function () {handle.stop();}, 5000);
 
