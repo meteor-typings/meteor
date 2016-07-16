@@ -12,7 +12,7 @@ like `meteor/meteor`, `meteor/mongo` etc.
 `typings` is a major typings utility today, which can install and search typings across
 multiple registers including [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped).
 
-For example, if you want to install NodeJS typings, try: `typigns install registry:env/node --global`.
+For example, if you want to install NodeJS typings, try: `typings install registry:env/node --global`.
 
 To find out if there is any typings for a particular library or NPM, use `typings search ...`.
 For more information, please read [here](https://github.com/typings/typings).
