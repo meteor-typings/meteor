@@ -1,6 +1,13 @@
 /// <reference path="meteor.d.ts" />
+interface URLS {
+  resetPassword: (token:string) => string;
+  verifyEmail:  (token:string) => string;
+  enrollAccount: (token:string) => string;
+}
 
 declare module Accounts {
+  var urls: URLS;
+
   function user(): Meteor.User;
   function userId(): string;
 
