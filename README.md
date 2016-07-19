@@ -32,7 +32,7 @@ If not - you are very welcome to create new repo and contribute typings.
 
 In order to build all typings run `gulp build`.
 
-`1.2` and `1.3` share the same Meteor core packages typings, which are located in `1.2/packages`.
+`1.2` and `1.3` share the same Meteor core packages' typings, which are located in `1.2/packages`.
 When you run `gulp 1_3`, typings are modified to contain modules corresponding new Meteor 1.3 namespaces.
 
 ## Contribution
