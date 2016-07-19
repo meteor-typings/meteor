@@ -12,7 +12,7 @@ declare module Meteor {
     public: {[id:string]: any},
     [id:string]: any
   };
-  /** G@bal props **/
+  /** Global props **/
 
   /** User **/
   interface UserEmail {
