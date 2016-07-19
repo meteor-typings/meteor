@@ -34,3 +34,9 @@ In order to build all typings run `gulp build`.
 
 `1.2` and `1.3` share the same Meteor core packages typings, which are located in `1.2/packages`.
 When you run `gulp 1_3`, typings are modified to contain modules corresponding new Meteor 1.3 namespaces.
+
+## Contribution
+
+Please make sure that you change associated Meteor packages' typings directly in `1.2/packages` and `1.3/packages` folders.
+`main.d.ts` and `browser.d.ts` are built out of them.
+
