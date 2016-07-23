@@ -503,6 +503,10 @@ declare module BrowserPolicy {
     allowDataUrlForAll(): void;
     allowOriginForAll(origin: string): void;
     allowImageOrigin(origin: string): void;
+    allowMediaOrigin(origin: string): void;
+    allowFontOrigin(origin: string): void;
+    allowStyleOrigin(origin: string): void;
+    allowScriptOrigin(origin: string): void;
     allowFrameOrigin(origin: string): void;
     allowContentTypeSniffing(): void;
     allowAllContentOrigin(): void;
@@ -535,6 +539,10 @@ declare module "meteor/browser-policy" {
       allowDataUrlForAll(): void;
       allowOriginForAll(origin: string): void;
       allowImageOrigin(origin: string): void;
+      allowMediaOrigin(origin: string): void;
+      allowFontOrigin(origin: string): void;
+      allowStyleOrigin(origin: string): void;
+      allowScriptOrigin(origin: string): void;
       allowFrameOrigin(origin: string): void;
       allowContentTypeSniffing(): void;
       allowAllContentOrigin(): void;
