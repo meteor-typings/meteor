@@ -706,3 +706,9 @@ const username = (<HTMLInputElement> Template.instance().find('#username')).valu
 // Covers https://github.com/meteor-typings/meteor/issues/3
 BrowserPolicy.framing.disallow();
 BrowserPolicy.content.allowEval();
+
+
+// Covers https://github.com/meteor-typings/meteor/issues/18
+if (Meteor.isDevelopment) {
+  Rooms._dropIndex({field: 1});
+}
