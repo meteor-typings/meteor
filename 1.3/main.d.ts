@@ -1,6 +1,13 @@
 /// <reference path="meteor.d.ts" />
+interface URLS {
+  resetPassword: (token: string) => string;
+  verifyEmail: (token: string) => string;
+  enrollAccount: (token: string) => string;
+}
 
 declare module Accounts {
+  var urls: URLS;
+
   function user(): Meteor.User;
 
   function userId(): string;
@@ -35,8 +42,15 @@ declare module Accounts {
 
 declare module "meteor/accounts-base" {
   /// <reference path="meteor.d.ts" />
+  interface URLS {
+    resetPassword: (token: string) => string;
+    verifyEmail: (token: string) => string;
+    enrollAccount: (token: string) => string;
+  }
 
   module Accounts {
+    var urls: URLS;
+
     function user(): Meteor.User;
 
     function userId(): string;
@@ -1166,8 +1180,6 @@ declare module Meteor {
 
   function loginWithPassword(user: Object | string, password: string, callback ? : Function): void;
 
-  function loginWithToken(token:string, callback ? : Function): void;
-
   function logout(callback ? : Function): void;
 
   function logoutOtherClients(callback ? : Function): void;
@@ -1416,6 +1428,9 @@ declare module Mongo {
     } | string, options ? : {
       [key: string]: any
     }): void;
+    _dropIndex(keys: {
+      [key: string]: number | string
+    } | string): void;
   }
 
   var Cursor: CursorStatic;
@@ -1522,6 +1537,9 @@ declare module "meteor/mongo" {
       } | string, options ? : {
         [key: string]: any
       }): void;
+      _dropIndex(keys: {
+        [key: string]: number | string
+      } | string): void;
     }
 
     var Cursor: CursorStatic;
@@ -2027,5 +2045,18 @@ declare module "meteor/tracker" {
     function nonreactive(func: Function): void;
 
     function onInvalidate(callback: Function): void;
+  }
+}
+declare module Meteor {
+  /** Global props **/
+  var isDevelopment: boolean;
+  /** Global props **/
+}
+
+declare module "meteor/meteor" {
+  module Meteor {
+    /** Global props **/
+    var isDevelopment: boolean;
+    /** Global props **/
   }
 }

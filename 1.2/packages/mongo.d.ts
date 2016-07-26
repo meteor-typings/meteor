@@ -59,6 +59,7 @@ declare module Mongo {
       multi?: boolean;
     }, callback?: Function): { numberAffected?: number; insertedId?: string; };
     _ensureIndex(keys: { [key: string]: number | string } | string, options?: { [key: string]: any }): void;
+    _dropIndex(keys: { [key: string]: number | string } | string): void;
   }
 
   var Cursor: CursorStatic;

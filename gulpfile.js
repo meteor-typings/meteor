@@ -50,18 +50,18 @@ function performChange(content) {
       content, fname, newContent), {
     indent_size: 2,
     indent_char: " "
-  }).replace(/declare\n/g, "declare ");
+  }).replace(/declare\r?\n/g, "declare ");
 }
 
 gulp.task("prep_1_3_main", function() {
-  return gulp.src(["./1.2/packages/*.ts"])
+  return gulp.src(["./1.2/packages/*.ts", "./1.3/packages/*.ts"])
     .pipe(change(performChange))
     .pipe(concat('main.d.ts'))
     .pipe(gulp.dest("1.3/"));
 });
 
 gulp.task("prep_1_3_browser", function() {
-  return gulp.src(["./1.2/packages/*.ts"])
+  return gulp.src(["./1.2/packages/*.ts", "./1.3/packages/*.ts"])
     .pipe(ignore('*tools_main.d.ts'))
     .pipe(change(performChange))
     .pipe(concat('browser.d.ts'))
