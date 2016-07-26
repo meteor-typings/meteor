@@ -1408,6 +1408,9 @@ declare module Mongo {
     } | string, options ? : {
       [key: string]: any
     }): void;
+    _dropIndex(keys: {
+      [key: string]: number | string
+    } | string): void;
   }
 
   var Cursor: CursorStatic;
@@ -1514,6 +1517,9 @@ declare module "meteor/mongo" {
       } | string, options ? : {
         [key: string]: any
       }): void;
+      _dropIndex(keys: {
+        [key: string]: number | string
+      } | string): void;
     }
 
     var Cursor: CursorStatic;
