@@ -928,6 +928,7 @@ declare module Meteor {
   var isClient: boolean;
   var isCordova: boolean;
   var isServer: boolean;
+  var isDevelopment: boolean;
   var isProduction: boolean;
   var release: string;
   var settings: {
@@ -1027,6 +1028,7 @@ declare module "meteor/meteor" {
     var isClient: boolean;
     var isCordova: boolean;
     var isServer: boolean;
+    var isDevelopment: boolean;
     var isProduction: boolean;
     var release: string;
     var settings: {
