@@ -258,7 +258,6 @@ declare module Match {
   var Boolean: any;
   var undefined: any;
   var Object: any;
-  function Maybe(pattern: any): boolean;
   function Optional(pattern: any): boolean;
   function ObjectIncluding(dico: any): boolean;
   function OneOf(...patterns: any[]): any;
