@@ -581,8 +581,6 @@ declare module Match {
   var undefined: any;
   var Object: any;
 
-  function Maybe(pattern: any): boolean;
-
   function Optional(pattern: any): boolean;
 
   function ObjectIncluding(dico: any): boolean;
@@ -605,8 +603,6 @@ declare module "meteor/check" {
     var undefined: any;
     var Object: any;
 
-    function Maybe(pattern: any): boolean;
-    
     function Optional(pattern: any): boolean;
 
     function ObjectIncluding(dico: any): boolean;
@@ -1462,7 +1458,7 @@ declare module Mongo {
     removed ? (id: string) : void;
   }
   interface Cursor < T > {
-    count(): number;
+    count(applySkipLimit ? : boolean): number;
     fetch(): Array < T > ;
     forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg ? : any): void;
     map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg ? : any): Array < U > ;
@@ -1571,7 +1567,7 @@ declare module "meteor/mongo" {
       removed ? (id: string) : void;
     }
     interface Cursor < T > {
-      count(): number;
+      count(applySkipLimit ? : boolean): number;
       fetch(): Array < T > ;
       forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg ? : any): void;
       map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg ? : any): Array < U > ;
@@ -2053,6 +2049,15 @@ declare module "meteor/tracker" {
     function nonreactive(func: Function): void;
 
     function onInvalidate(callback: Function): void;
+  }
+}
+declare module Match {
+  function Maybe(pattern: any): boolean;
+}
+
+declare module "meteor/check" {
+  module Match {
+    function Maybe(pattern: any): boolean;
   }
 }
 declare module Meteor {
