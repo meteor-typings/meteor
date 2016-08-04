@@ -23,7 +23,7 @@ gulp.task("prep_1_2_browser", function() {
 });
 
 gulp.task("1_2_bundle", function(callback) {
-  exec("cd 1.2 && typings bundle --global -o out",
+  exec("cd 1.2 && typings bundle --global -o out/main.d.ts",
     function(err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
@@ -69,7 +69,7 @@ gulp.task("prep_1_3_browser", function() {
 });
 
 gulp.task("1_3_bundle", function(callback) {
-  exec("cd 1.3 && typings bundle --global -o out",
+  exec("cd 1.3 && typings bundle --global -o out/main.d.ts",
     function(err, stdout, stderr) {
       console.log(stdout);
       console.log(stderr);
