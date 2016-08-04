@@ -712,3 +712,7 @@ BrowserPolicy.content.allowEval();
 if (Meteor.isDevelopment) {
   Rooms._dropIndex({field: 1});
 }
+
+
+// Covers https://github.com/meteor-typings/meteor/issues/20
+Rooms.find().count(true);
