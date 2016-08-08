@@ -2063,6 +2063,7 @@ declare module "meteor/check" {
 declare module Meteor {
   /** Global props **/
   var isDevelopment: boolean;
+  var isTest: boolean;
   /** Global props **/
 }
 
@@ -2070,6 +2071,7 @@ declare module "meteor/meteor" {
   module Meteor {
     /** Global props **/
     var isDevelopment: boolean;
+    var isTest: boolean;
     /** Global props **/
   }
 }

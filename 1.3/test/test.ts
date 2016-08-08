@@ -716,3 +716,9 @@ if (Meteor.isDevelopment) {
 
 // Covers https://github.com/meteor-typings/meteor/issues/20
 Rooms.find().count(true);
+
+
+// Covers https://github.com/meteor-typings/meteor/issues/21
+if (Meteor.isTest) {
+  // do something
+}
