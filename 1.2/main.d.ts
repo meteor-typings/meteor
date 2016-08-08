@@ -817,6 +817,7 @@ declare function execFileSync(command: string, args?: any[], options?: {
 declare module Assets {
   function getBinary(assetPath: string, asyncCallback?: Function): EJSON;
   function getText(assetPath: string, asyncCallback?: Function): string;
+  function absoluteFilePath(assetPath: string): string;
 }
 
 declare module Cordova {
