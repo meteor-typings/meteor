@@ -38,5 +38,9 @@ When you run `gulp 1_3`, typings are modified to contain modules corresponding n
 ## Contribution
 
 Please make sure that you change associated Meteor packages' typings directly in `1.2/packages` and `1.3/packages` folders.
-`main.d.ts` and `browser.d.ts` are built out of them.
+`main.d.ts` and `browser.d.ts` are built out of them. Here are contribution steps.
 
+1. Install dependencies via `npm install` in this directory.
+2. Change typing files in the directories `1.2/packages` or/and `1.3/packages`.
+3. (Optional) Add test cases in the file `1.3/test/test.ts`.
+4. Run `npm run build+test` to generate `[1.2|1.3]/[browser.d.ts|header.d.ts|main.d.ts]` and to test typings.
