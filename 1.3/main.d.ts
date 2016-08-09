@@ -1814,6 +1814,8 @@ declare module Assets {
   function getBinary(assetPath: string, asyncCallback ? : Function): EJSON;
 
   function getText(assetPath: string, asyncCallback ? : Function): string;
+
+  function absoluteFilePath(assetPath: string): string;
 }
 
 declare module Cordova {
@@ -1917,6 +1919,8 @@ declare module "meteor/tools" {
     function getBinary(assetPath: string, asyncCallback ? : Function): EJSON;
 
     function getText(assetPath: string, asyncCallback ? : Function): string;
+
+    function absoluteFilePath(assetPath: string): string;
   }
 
   module Cordova {
