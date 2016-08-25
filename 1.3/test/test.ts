@@ -17,6 +17,7 @@ import {HTTP} from "meteor/http";
 import {ReactiveVar} from "meteor/reactive-var";
 import {Accounts} from "meteor/accounts-base";
 import {BrowserPolicy} from "meteor/browser-policy";
+import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 
 var Rooms = new Mongo.Collection('rooms');
 var Messages = new Mongo.Collection('messages');
@@ -722,3 +723,8 @@ Rooms.find().count(true);
 if (Meteor.isTest) {
   // do something
 }
+
+DDPRateLimiter.addRule({ userId: 'foo' }, 5, 1000);
+
+DDPRateLimiter.addRule((userId: string) => userId =='foo', 5, 1000);
+

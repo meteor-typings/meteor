@@ -36,7 +36,11 @@ gulp.task("1_2", function(callback) {
 });
 
 function performChange(content) {
-  var newContent = content
+  var cleanContent = content
+    .replace(/\/\/\/\s\<reference path=".*"\s\/>\n?/g, "")
+    .replace(/^\n*\s*$/, '');
+
+  var newModuleContent = cleanContent
     .replace(/declare\s/g, "");
 
   var fname = this.fname
@@ -47,10 +51,10 @@ function performChange(content) {
   return beautify(
     util.format(
       "%s\ndeclare module \"meteor/%s\" {\n%s}",
-      content, fname, newContent), {
+      cleanContent, fname, newModuleContent), {
     indent_size: 2,
     indent_char: " "
-  }).replace(/declare\r?\n/g, "declare ");
+  }).replace(/declare\r?\n/g, "declare ") + '\n';
 }
 
 gulp.task("prep_1_3_main", function() {

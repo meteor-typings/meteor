@@ -1,4 +1,3 @@
-/// <reference path="meteor.d.ts" />
 interface URLS {
   resetPassword: (token: string) => string;
   verifyEmail: (token: string) => string;
@@ -41,7 +40,6 @@ declare module Accounts {
 }
 
 declare module "meteor/accounts-base" {
-  /// <reference path="meteor.d.ts" />
   interface URLS {
     resetPassword: (token: string) => string;
     verifyEmail: (token: string) => string;
@@ -83,6 +81,7 @@ declare module "meteor/accounts-base" {
     function onPageLoadLogin(func: Function): void;
   }
 }
+
 declare module Accounts {
   function changePassword(oldPassword: string, newPassword: string, callback ? : Function): void;
 
@@ -150,8 +149,6 @@ declare module "meteor/accounts-base" {
     };
   }
 }
-/// <reference path="meteor.d.ts" />
-/// <reference path="meteor_main.d.ts" />
 
 interface EmailFields {
   from ? : () => string;
@@ -216,8 +213,6 @@ declare module Accounts {
 }
 
 declare module "meteor/accounts-base" {
-  /// <reference path="meteor.d.ts" />
-  /// <reference path="meteor_main.d.ts" />
 
   interface EmailFields {
     from ? : () => string;
@@ -281,7 +276,6 @@ declare module "meteor/accounts-base" {
     }
   }
 }
-/// <reference path="meteor.d.ts" />
 
 declare module Blaze {
   var View: ViewStatic;
@@ -392,7 +386,6 @@ declare module Blaze {
 }
 
 declare module "meteor/blaze" {
-  /// <reference path="meteor.d.ts" />
 
   module Blaze {
     var View: ViewStatic;
@@ -502,6 +495,7 @@ declare module "meteor/blaze" {
     function toHTMLWithData(templateOrView: Template | View, data: Object | Function): string;
   }
 }
+
 declare module BrowserPolicy {
   var framing: {
     disallow(): void;
@@ -573,6 +567,7 @@ declare module "meteor/browser-policy" {
     };
   }
 }
+
 declare module Match {
   var Any: any;
   var String: any;
@@ -616,7 +611,36 @@ declare module "meteor/check" {
 
   function check(value: any, pattern: any): void;
 }
-/// <reference path="meteor.d.ts" />
+
+declare module DDPRateLimiter {
+  interface Matcher {
+    type ? : string | ((type: string) => boolean);
+    name ? : string | ((name: string) => boolean);
+    userId ? : string | ((userId: string) => boolean);
+    connectionId ? : string | ((connectionId: string) => boolean);
+    clientAddress ? : string | ((clientAddress: string) => boolean);
+  }
+
+  function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
+
+  function removeRule(ruleId: string): boolean;
+}
+
+declare module "meteor/ddp-rate-limiter" {
+  module DDPRateLimiter {
+    interface Matcher {
+      type ? : string | ((type: string) => boolean);
+      name ? : string | ((name: string) => boolean);
+      userId ? : string | ((userId: string) => boolean);
+      connectionId ? : string | ((connectionId: string) => boolean);
+      clientAddress ? : string | ((clientAddress: string) => boolean);
+    }
+
+    function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
+
+    function removeRule(ruleId: string): boolean;
+  }
+}
 
 declare module DDP {
   interface DDPStatic {
@@ -656,7 +680,6 @@ declare module DDPCommon {
 }
 
 declare module "meteor/ddp" {
-  /// <reference path="meteor.d.ts" />
 
   module DDP {
     interface DDPStatic {
@@ -695,6 +718,7 @@ declare module "meteor/ddp" {
     }
   }
 }
+
 interface EJSONableCustomType {
   clone(): EJSONableCustomType;
   equals(other: Object): boolean;
@@ -772,6 +796,7 @@ declare module "meteor/ejson" {
     function toJSONValue(val: EJSON): JSONable;
   }
 }
+
 declare module Email {
   function send(options: {
     from ? : string;
@@ -843,6 +868,7 @@ declare module "meteor/email" {
     pipe(stream: any /** fs.WriteStream **/ ): void;
   }
 }
+
 declare module HTTP {
   interface HTTPRequest {
     content ? : string;
@@ -942,8 +968,6 @@ declare module "meteor/http" {
     }, asyncCallback ? : Function): HTTP.HTTPResponse;
   }
 }
-/// <reference path="mongo.d.ts" />
-/// <reference path="ejson.d.ts" />
 
 declare module Meteor {
   /** Global props **/
@@ -1041,8 +1065,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-  /// <reference path="mongo.d.ts" />
-  /// <reference path="ejson.d.ts" />
 
   module Meteor {
     /** Global props **/
@@ -1139,7 +1161,6 @@ declare module "meteor/meteor" {
     /** Pub/Sub **/
   }
 }
-/// <reference path="meteor.d.ts" />
 
 declare module Meteor {
   /** Login **/
@@ -1224,7 +1245,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-  /// <reference path="meteor.d.ts" />
 
   module Meteor {
     /** Login **/
@@ -1308,6 +1328,7 @@ declare module "meteor/meteor" {
     /** Pub/Sub **/
   }
 }
+
 declare module Meteor {
   /** Connection **/
   interface Connection {
@@ -1365,6 +1386,7 @@ declare module "meteor/meteor" {
     userId: string;
   }
 }
+
 declare module Mongo {
   interface Selector {
     [key: string]: any;
@@ -1582,6 +1604,7 @@ declare module "meteor/mongo" {
     interface ObjectID {}
   }
 }
+
 declare module Mongo {
   interface AllowDenyOptions {
     insert ? : (userId: string, doc: any) => boolean;
@@ -1603,6 +1626,7 @@ declare module "meteor/mongo" {
     }
   }
 }
+
 declare module Random {
   function id(numberOfChars ? : number): string;
 
@@ -1632,6 +1656,7 @@ declare module "meteor/random" {
     function choice(str: string): string;
   }
 }
+
 declare var ReactiveVar: ReactiveVarStatic;
 interface ReactiveVarStatic {
   new < T > (initialValue: T, equalsFunc ? : Function): ReactiveVar < T > ;
@@ -1651,7 +1676,6 @@ declare module "meteor/reactive-var" {
     set(newValue: T): void;
   }
 }
-/// <reference path="ejson.d.ts" />
 
 declare module Session {
   function equals(key: string, value: string | number | boolean | any): boolean;
@@ -1664,7 +1688,6 @@ declare module Session {
 }
 
 declare module "meteor/session" {
-  /// <reference path="ejson.d.ts" />
 
   module Session {
     function equals(key: string, value: string | number | boolean | any): boolean;
@@ -1676,7 +1699,6 @@ declare module "meteor/session" {
     function setDefault(key: string, value: EJSONable | any): void;
   }
 }
-/// <reference path="blaze.d.ts" />
 
 declare var Template: TemplateStatic;
 interface TemplateStatic extends Blaze.TemplateStatic {
@@ -1686,7 +1708,6 @@ interface TemplateStatic extends Blaze.TemplateStatic {
 }
 
 declare module "meteor/templating" {
-  /// <reference path="blaze.d.ts" />
 
   var Template: TemplateStatic;
   interface TemplateStatic extends Blaze.TemplateStatic {
@@ -1695,6 +1716,7 @@ declare module "meteor/templating" {
     [index: string]: any | Blaze.Template;
   }
 }
+
 interface ILengthAble {
   length: number;
 }
@@ -1770,6 +1792,7 @@ declare module "meteor/tiny-test" {
     function addAsync(description: string, func: (test: ITinytestAssertions) => void): void;
   }
 }
+
 declare module Tracker {
   function Computation(): void;
   interface Computation {
@@ -1847,6 +1870,7 @@ declare module "meteor/tracker" {
     function onInvalidate(callback: Function): void;
   }
 }
+
 declare module Match {
   function Maybe(pattern: any): boolean;
 }
@@ -1856,6 +1880,7 @@ declare module "meteor/check" {
     function Maybe(pattern: any): boolean;
   }
 }
+
 declare module Meteor {
   /** Global props **/
   var isDevelopment: boolean;

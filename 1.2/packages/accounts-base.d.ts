@@ -1,8 +1,8 @@
 /// <reference path="meteor.d.ts" />
 interface URLS {
-  resetPassword: (token:string) => string;
-  verifyEmail:  (token:string) => string;
-  enrollAccount: (token:string) => string;
+  resetPassword: (token: string) => string;
+  verifyEmail:  (token: string) => string;
+  enrollAccount: (token: string) => string;
 }
 
 declare module Accounts {
