@@ -50,11 +50,14 @@ function performChange(content) {
 
   return beautify(
     util.format(
-      "%s\ndeclare module \"meteor/%s\" {\n%s}",
+      "%s\ndeclare module \"meteor/%s\" {%s}",
       cleanContent, fname, newModuleContent), {
     indent_size: 2,
     indent_char: " "
-  }).replace(/declare\r?\n/g, "declare ") + '\n';
+  })
+  .replace(/declare\r?\n/g, "declare ")
+  // removing space before/after ? for optional params
+  .replace(/\s\?\s?/g, '?') + '\n';
 }
 
 gulp.task("prep_1_3_main", function() {

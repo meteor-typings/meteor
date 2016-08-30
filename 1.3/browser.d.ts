@@ -12,18 +12,18 @@ declare module Accounts {
   function userId(): string;
 
   function createUser(options: {
-    username ? : string;
-    email ? : string;
-    password ? : string;
-    profile ? : Object;
-  }, callback ? : Function): string;
+    username?: string;
+    email?: string;
+    password?: string;
+    profile?: Object;
+  }, callback?: Function): string;
 
   function config(options: {
-    sendVerificationEmail ? : boolean;
-    forbidClientAccountCreation ? : boolean;
-    restrictCreationByEmailDomain ? : string | Function;
-    loginExpirationInDays ? : number;
-    oauthSecretKey ? : string;
+    sendVerificationEmail?: boolean;
+    forbidClientAccountCreation?: boolean;
+    restrictCreationByEmailDomain?: string | Function;
+    loginExpirationInDays?: number;
+    oauthSecretKey?: string;
   }): void;
 
   function onLogin(func: Function): {
@@ -54,18 +54,18 @@ declare module "meteor/accounts-base" {
     function userId(): string;
 
     function createUser(options: {
-      username ? : string;
-      email ? : string;
-      password ? : string;
-      profile ? : Object;
-    }, callback ? : Function): string;
+      username?: string;
+      email?: string;
+      password?: string;
+      profile?: Object;
+    }, callback?: Function): string;
 
     function config(options: {
-      sendVerificationEmail ? : boolean;
-      forbidClientAccountCreation ? : boolean;
-      restrictCreationByEmailDomain ? : string | Function;
-      loginExpirationInDays ? : number;
-      oauthSecretKey ? : string;
+      sendVerificationEmail?: boolean;
+      forbidClientAccountCreation?: boolean;
+      restrictCreationByEmailDomain?: string | Function;
+      loginExpirationInDays?: number;
+      oauthSecretKey?: string;
     }): void;
 
     function onLogin(func: Function): {
@@ -83,15 +83,15 @@ declare module "meteor/accounts-base" {
 }
 
 declare module Accounts {
-  function changePassword(oldPassword: string, newPassword: string, callback ? : Function): void;
+  function changePassword(oldPassword: string, newPassword: string, callback?: Function): void;
 
   function forgotPassword(options: {
-    email ? : string;
-  }, callback ? : Function): void;
+    email?: string;
+  }, callback?: Function): void;
 
-  function resetPassword(token: string, newPassword: string, callback ? : Function): void;
+  function resetPassword(token: string, newPassword: string, callback?: Function): void;
 
-  function verifyEmail(token: string, callback ? : Function): void;
+  function verifyEmail(token: string, callback?: Function): void;
 
   function onEmailVerificationLink(callback: Function): void;
 
@@ -101,31 +101,31 @@ declare module Accounts {
 
   function loggingIn(): boolean;
 
-  function logout(callback ? : Function): void;
+  function logout(callback?: Function): void;
 
-  function logoutOtherClients(callback ? : Function): void;
+  function logoutOtherClients(callback?: Function): void;
 
   var ui: {
     config(options: {
-      requestPermissions ? : Object;
-      requestOfflineToken ? : Object;
-      forceApprovalPrompt ? : Object;
-      passwordSignupFields ? : string;
+      requestPermissions?: Object;
+      requestOfflineToken?: Object;
+      forceApprovalPrompt?: Object;
+      passwordSignupFields?: string;
     }): void;
   };
 }
 
 declare module "meteor/accounts-base" {
   module Accounts {
-    function changePassword(oldPassword: string, newPassword: string, callback ? : Function): void;
+    function changePassword(oldPassword: string, newPassword: string, callback?: Function): void;
 
     function forgotPassword(options: {
-      email ? : string;
-    }, callback ? : Function): void;
+      email?: string;
+    }, callback?: Function): void;
 
-    function resetPassword(token: string, newPassword: string, callback ? : Function): void;
+    function resetPassword(token: string, newPassword: string, callback?: Function): void;
 
-    function verifyEmail(token: string, callback ? : Function): void;
+    function verifyEmail(token: string, callback?: Function): void;
 
     function onEmailVerificationLink(callback: Function): void;
 
@@ -135,26 +135,26 @@ declare module "meteor/accounts-base" {
 
     function loggingIn(): boolean;
 
-    function logout(callback ? : Function): void;
+    function logout(callback?: Function): void;
 
-    function logoutOtherClients(callback ? : Function): void;
+    function logoutOtherClients(callback?: Function): void;
 
     var ui: {
       config(options: {
-        requestPermissions ? : Object;
-        requestOfflineToken ? : Object;
-        forceApprovalPrompt ? : Object;
-        passwordSignupFields ? : string;
+        requestPermissions?: Object;
+        requestOfflineToken?: Object;
+        forceApprovalPrompt?: Object;
+        passwordSignupFields?: string;
       }): void;
     };
   }
 }
 
 interface EmailFields {
-  from ? : () => string;
-  subject ? : (user: Meteor.User) => string;
-  text ? : (user: Meteor.User, url: string) => string;
-  html ? : (user: Meteor.User, url: string) => string;
+  from?: () => string;
+  subject?: (user: Meteor.User) => string;
+  text?: (user: Meteor.User, url: string) => string;
+  html?: (user: Meteor.User, url: string) => string;
 }
 
 interface Header {
@@ -164,7 +164,7 @@ interface Header {
 interface EmailTemplates {
   from: string;
   siteName: string;
-  headers ? : Header;
+  headers?: Header;
   resetPassword: EmailFields;
   enrollAccount: EmailFields;
   verifyEmail: EmailFields;
@@ -173,7 +173,7 @@ interface EmailTemplates {
 declare module Accounts {
   var emailTemplates: EmailTemplates;
 
-  function addEmail(userId: string, newEmail: string, verified ? : boolean): void;
+  function addEmail(userId: string, newEmail: string, verified?: boolean): void;
 
   function removeEmail(userId: string, email: string): void;
 
@@ -183,16 +183,16 @@ declare module Accounts {
 
   function findUserByUsername(username: string): Object;
 
-  function sendEnrollmentEmail(userId: string, email ? : string): void;
+  function sendEnrollmentEmail(userId: string, email?: string): void;
 
-  function sendResetPasswordEmail(userId: string, email ? : string): void;
+  function sendResetPasswordEmail(userId: string, email?: string): void;
 
-  function sendVerificationEmail(userId: string, email ? : string): void;
+  function sendVerificationEmail(userId: string, email?: string): void;
 
   function setUsername(userId: string, newUsername: string): void;
 
-  function setPassword(userId: string, newPassword: string, options ? : {
-    logout ? : Object;
+  function setPassword(userId: string, newPassword: string, options?: {
+    logout?: Object;
   }): void;
 
   function validateNewUser(func: Function): boolean;
@@ -213,12 +213,11 @@ declare module Accounts {
 }
 
 declare module "meteor/accounts-base" {
-
   interface EmailFields {
-    from ? : () => string;
-    subject ? : (user: Meteor.User) => string;
-    text ? : (user: Meteor.User, url: string) => string;
-    html ? : (user: Meteor.User, url: string) => string;
+    from?: () => string;
+    subject?: (user: Meteor.User) => string;
+    text?: (user: Meteor.User, url: string) => string;
+    html?: (user: Meteor.User, url: string) => string;
   }
 
   interface Header {
@@ -228,7 +227,7 @@ declare module "meteor/accounts-base" {
   interface EmailTemplates {
     from: string;
     siteName: string;
-    headers ? : Header;
+    headers?: Header;
     resetPassword: EmailFields;
     enrollAccount: EmailFields;
     verifyEmail: EmailFields;
@@ -237,7 +236,7 @@ declare module "meteor/accounts-base" {
   module Accounts {
     var emailTemplates: EmailTemplates;
 
-    function addEmail(userId: string, newEmail: string, verified ? : boolean): void;
+    function addEmail(userId: string, newEmail: string, verified?: boolean): void;
 
     function removeEmail(userId: string, email: string): void;
 
@@ -247,16 +246,16 @@ declare module "meteor/accounts-base" {
 
     function findUserByUsername(username: string): Object;
 
-    function sendEnrollmentEmail(userId: string, email ? : string): void;
+    function sendEnrollmentEmail(userId: string, email?: string): void;
 
-    function sendResetPasswordEmail(userId: string, email ? : string): void;
+    function sendResetPasswordEmail(userId: string, email?: string): void;
 
-    function sendVerificationEmail(userId: string, email ? : string): void;
+    function sendVerificationEmail(userId: string, email?: string): void;
 
     function setUsername(userId: string, newUsername: string): void;
 
-    function setPassword(userId: string, newPassword: string, options ? : {
-      logout ? : Object;
+    function setPassword(userId: string, newPassword: string, options?: {
+      logout?: Object;
     }): void;
 
     function validateNewUser(func: Function): boolean;
@@ -281,7 +280,7 @@ declare module Blaze {
   var View: ViewStatic;
 
   interface ViewStatic {
-    new(name ? : string, renderFunction ? : Function): View;
+    new(name?: string, renderFunction?: Function): View;
   }
 
   interface View {
@@ -315,7 +314,7 @@ declare module Blaze {
   var Template: TemplateStatic;
 
   interface TemplateStatic {
-    new(viewName ? : string, renderFunction ? : Function): Template;
+    new(viewName?: string, renderFunction?: Function): Template;
 
     registerHelper(name: string, func: Function): void;
     instance(): TemplateInstance;
@@ -360,25 +359,25 @@ declare module Blaze {
     view: Object;
   }
 
-  function Each(argFunc: Function, contentFunc: Function, elseFunc ? : Function): View;
+  function Each(argFunc: Function, contentFunc: Function, elseFunc?: Function): View;
 
-  function Unless(conditionFunc: Function, contentFunc: Function, elseFunc ? : Function): View;
+  function Unless(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
 
-  function If(conditionFunc: Function, contentFunc: Function, elseFunc ? : Function): View;
+  function If(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
 
   function Let(bindings: Function, contentFunc: Function): View;
 
   function With(data: Object | Function, contentFunc: Function): View;
 
-  function getData(elementOrView ? : HTMLElement | View): Object;
+  function getData(elementOrView?: HTMLElement | View): Object;
 
-  function getView(element ? : HTMLElement): View;
+  function getView(element?: HTMLElement): View;
 
   function remove(renderedView: View): void;
 
-  function render(templateOrView: Template | View, parentNode: Node, nextNode ? : Node, parentView ? : View): View;
+  function render(templateOrView: Template | View, parentNode: Node, nextNode?: Node, parentView?: View): View;
 
-  function renderWithData(templateOrView: Template | View, data: Object | Function, parentNode: Node, nextNode ? : Node, parentView ? : View): View;
+  function renderWithData(templateOrView: Template | View, data: Object | Function, parentNode: Node, nextNode?: Node, parentView?: View): View;
 
   function toHTML(templateOrView: Template | View): string;
 
@@ -386,12 +385,11 @@ declare module Blaze {
 }
 
 declare module "meteor/blaze" {
-
   module Blaze {
     var View: ViewStatic;
 
     interface ViewStatic {
-      new(name ? : string, renderFunction ? : Function): View;
+      new(name?: string, renderFunction?: Function): View;
     }
 
     interface View {
@@ -425,7 +423,7 @@ declare module "meteor/blaze" {
     var Template: TemplateStatic;
 
     interface TemplateStatic {
-      new(viewName ? : string, renderFunction ? : Function): Template;
+      new(viewName?: string, renderFunction?: Function): Template;
 
       registerHelper(name: string, func: Function): void;
       instance(): TemplateInstance;
@@ -470,25 +468,25 @@ declare module "meteor/blaze" {
       view: Object;
     }
 
-    function Each(argFunc: Function, contentFunc: Function, elseFunc ? : Function): View;
+    function Each(argFunc: Function, contentFunc: Function, elseFunc?: Function): View;
 
-    function Unless(conditionFunc: Function, contentFunc: Function, elseFunc ? : Function): View;
+    function Unless(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
 
-    function If(conditionFunc: Function, contentFunc: Function, elseFunc ? : Function): View;
+    function If(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
 
     function Let(bindings: Function, contentFunc: Function): View;
 
     function With(data: Object | Function, contentFunc: Function): View;
 
-    function getData(elementOrView ? : HTMLElement | View): Object;
+    function getData(elementOrView?: HTMLElement | View): Object;
 
-    function getView(element ? : HTMLElement): View;
+    function getView(element?: HTMLElement): View;
 
     function remove(renderedView: View): void;
 
-    function render(templateOrView: Template | View, parentNode: Node, nextNode ? : Node, parentView ? : View): View;
+    function render(templateOrView: Template | View, parentNode: Node, nextNode?: Node, parentView?: View): View;
 
-    function renderWithData(templateOrView: Template | View, data: Object | Function, parentNode: Node, nextNode ? : Node, parentView ? : View): View;
+    function renderWithData(templateOrView: Template | View, data: Object | Function, parentNode: Node, nextNode?: Node, parentView?: View): View;
 
     function toHTML(templateOrView: Template | View): string;
 
@@ -531,7 +529,7 @@ declare module BrowserPolicy {
   };
 }
 
-declare module "meteor/browser-policy" {
+declare module "meteor/browser-policy-common" {
   module BrowserPolicy {
     var framing: {
       disallow(): void;
@@ -614,11 +612,11 @@ declare module "meteor/check" {
 
 declare module DDPRateLimiter {
   interface Matcher {
-    type ? : string | ((type: string) => boolean);
-    name ? : string | ((name: string) => boolean);
-    userId ? : string | ((userId: string) => boolean);
-    connectionId ? : string | ((connectionId: string) => boolean);
-    clientAddress ? : string | ((clientAddress: string) => boolean);
+    type?: string | ((type: string) => boolean);
+    name?: string | ((name: string) => boolean);
+    userId?: string | ((userId: string) => boolean);
+    connectionId?: string | ((connectionId: string) => boolean);
+    clientAddress?: string | ((clientAddress: string) => boolean);
   }
 
   function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
@@ -629,11 +627,11 @@ declare module DDPRateLimiter {
 declare module "meteor/ddp-rate-limiter" {
   module DDPRateLimiter {
     interface Matcher {
-      type ? : string | ((type: string) => boolean);
-      name ? : string | ((name: string) => boolean);
-      userId ? : string | ((userId: string) => boolean);
-      connectionId ? : string | ((connectionId: string) => boolean);
-      clientAddress ? : string | ((clientAddress: string) => boolean);
+      type?: string | ((type: string) => boolean);
+      name?: string | ((name: string) => boolean);
+      userId?: string | ((userId: string) => boolean);
+      connectionId?: string | ((connectionId: string) => boolean);
+      clientAddress?: string | ((clientAddress: string) => boolean);
     }
 
     function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
@@ -662,8 +660,8 @@ declare module DDP {
     connected: boolean;
     status: Status;
     retryCount: number;
-    retryTime ? : number;
-    reason ? : string;
+    retryTime?: number;
+    reason?: string;
   }
 
   function connect(url: string): DDPStatic;
@@ -680,7 +678,6 @@ declare module DDPCommon {
 }
 
 declare module "meteor/ddp" {
-
   module DDP {
     interface DDPStatic {
       subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;
@@ -701,8 +698,8 @@ declare module "meteor/ddp" {
       connected: boolean;
       status: Status;
       retryCount: number;
-      retryTime ? : number;
-      reason ? : string;
+      retryTime?: number;
+      reason?: string;
     }
 
     function connect(url: string): DDPStatic;
@@ -738,8 +735,8 @@ declare module EJSON {
 
   function clone < T > (val: T): T;
 
-  function equals(a: EJSON, b: EJSON, options ? : {
-    keyOrderSensitive ? : boolean;
+  function equals(a: EJSON, b: EJSON, options?: {
+    keyOrderSensitive?: boolean;
   }): boolean;
 
   function fromJSONValue(val: JSONable): any;
@@ -749,9 +746,9 @@ declare module EJSON {
 
   function parse(str: string): EJSON;
 
-  function stringify(val: EJSON, options ? : {
-    indent ? : boolean | number | string;
-    canonical ? : boolean;
+  function stringify(val: EJSON, options?: {
+    indent?: boolean | number | string;
+    canonical?: boolean;
   }): string;
 
   function toJSONValue(val: EJSON): JSONable;
@@ -777,8 +774,8 @@ declare module "meteor/ejson" {
 
     function clone < T > (val: T): T;
 
-    function equals(a: EJSON, b: EJSON, options ? : {
-      keyOrderSensitive ? : boolean;
+    function equals(a: EJSON, b: EJSON, options?: {
+      keyOrderSensitive?: boolean;
     }): boolean;
 
     function fromJSONValue(val: JSONable): any;
@@ -788,9 +785,9 @@ declare module "meteor/ejson" {
 
     function parse(str: string): EJSON;
 
-    function stringify(val: EJSON, options ? : {
-      indent ? : boolean | number | string;
-      canonical ? : boolean;
+    function stringify(val: EJSON, options?: {
+      indent?: boolean | number | string;
+      canonical?: boolean;
     }): string;
 
     function toJSONValue(val: EJSON): JSONable;
@@ -799,17 +796,17 @@ declare module "meteor/ejson" {
 
 declare module Email {
   function send(options: {
-    from ? : string;
-    to ? : string | string[];
-    cc ? : string | string[];
-    bcc ? : string | string[];
-    replyTo ? : string | string[];
-    subject ? : string;
-    text ? : string;
-    html ? : string;
-    headers ? : Object;
-    attachments ? : Object[];
-    mailComposer ? : MailComposer;
+    from?: string;
+    to?: string | string[];
+    cc?: string | string[];
+    bcc?: string | string[];
+    replyTo?: string | string[];
+    subject?: string;
+    text?: string;
+    html?: string;
+    headers?: Object;
+    attachments?: Object[];
+    mailComposer?: MailComposer;
   }): void;
 }
 
@@ -835,17 +832,17 @@ interface MailComposer {
 declare module "meteor/email" {
   module Email {
     function send(options: {
-      from ? : string;
-      to ? : string | string[];
-      cc ? : string | string[];
-      bcc ? : string | string[];
-      replyTo ? : string | string[];
-      subject ? : string;
-      text ? : string;
-      html ? : string;
-      headers ? : Object;
-      attachments ? : Object[];
-      mailComposer ? : MailComposer;
+      from?: string;
+      to?: string | string[];
+      cc?: string | string[];
+      bcc?: string | string[];
+      replyTo?: string | string[];
+      subject?: string;
+      text?: string;
+      html?: string;
+      headers?: Object;
+      attachments?: Object[];
+      mailComposer?: MailComposer;
     }): void;
   }
 
@@ -871,101 +868,101 @@ declare module "meteor/email" {
 
 declare module HTTP {
   interface HTTPRequest {
-    content ? : string;
-    data ? : any;
-    query ? : string;
-    params ? : {
+    content?: string;
+    data?: any;
+    query?: string;
+    params?: {
       [id: string]: string
     };
-    auth ? : string;
-    headers ? : {
+    auth?: string;
+    headers?: {
       [id: string]: string
     };
-    timeout ? : number;
-    followRedirects ? : boolean;
+    timeout?: number;
+    followRedirects?: boolean;
   }
 
   interface HTTPResponse {
-    statusCode ? : number;
-    headers ? : {
+    statusCode?: number;
+    headers?: {
       [id: string]: string
     };
-    content ? : string;
-    data ? : any;
+    content?: string;
+    data?: any;
   }
 
-  function call(method: string, url: string, options ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+  function call(method: string, url: string, options?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-  function del(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+  function del(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-  function get(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+  function get(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-  function post(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+  function post(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-  function put(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+  function put(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-  function call(method: string, url: string, options ? : {
-    content ? : string;
-    data ? : Object;
-    query ? : string;
-    params ? : Object;
-    auth ? : string;
-    headers ? : Object;
-    timeout ? : number;
-    followRedirects ? : boolean;
-    npmRequestOptions ? : Object;
-    beforeSend ? : Function;
-  }, asyncCallback ? : Function): HTTP.HTTPResponse;
+  function call(method: string, url: string, options?: {
+    content?: string;
+    data?: Object;
+    query?: string;
+    params?: Object;
+    auth?: string;
+    headers?: Object;
+    timeout?: number;
+    followRedirects?: boolean;
+    npmRequestOptions?: Object;
+    beforeSend?: Function;
+  }, asyncCallback?: Function): HTTP.HTTPResponse;
 }
 
 declare module "meteor/http" {
   module HTTP {
     interface HTTPRequest {
-      content ? : string;
-      data ? : any;
-      query ? : string;
-      params ? : {
+      content?: string;
+      data?: any;
+      query?: string;
+      params?: {
         [id: string]: string
       };
-      auth ? : string;
-      headers ? : {
+      auth?: string;
+      headers?: {
         [id: string]: string
       };
-      timeout ? : number;
-      followRedirects ? : boolean;
+      timeout?: number;
+      followRedirects?: boolean;
     }
 
     interface HTTPResponse {
-      statusCode ? : number;
-      headers ? : {
+      statusCode?: number;
+      headers?: {
         [id: string]: string
       };
-      content ? : string;
-      data ? : any;
+      content?: string;
+      data?: any;
     }
 
-    function call(method: string, url: string, options ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+    function call(method: string, url: string, options?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-    function del(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+    function del(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-    function get(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+    function get(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-    function post(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+    function post(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-    function put(url: string, callOptions ? : HTTP.HTTPRequest, asyncCallback ? : Function): HTTP.HTTPResponse;
+    function put(url: string, callOptions?: HTTP.HTTPRequest, asyncCallback?: Function): HTTP.HTTPResponse;
 
-    function call(method: string, url: string, options ? : {
-      content ? : string;
-      data ? : Object;
-      query ? : string;
-      params ? : Object;
-      auth ? : string;
-      headers ? : Object;
-      timeout ? : number;
-      followRedirects ? : boolean;
-      npmRequestOptions ? : Object;
-      beforeSend ? : Function;
-    }, asyncCallback ? : Function): HTTP.HTTPResponse;
+    function call(method: string, url: string, options?: {
+      content?: string;
+      data?: Object;
+      query?: string;
+      params?: Object;
+      auth?: string;
+      headers?: Object;
+      timeout?: number;
+      followRedirects?: boolean;
+      npmRequestOptions?: Object;
+      beforeSend?: Function;
+    }, asyncCallback?: Function): HTTP.HTTPResponse;
   }
 }
 
@@ -990,12 +987,12 @@ declare module Meteor {
     verified: boolean;
   }
   interface User {
-    _id ? : string;
-    username ? : string;
-    emails ? : UserEmail[];
-    createdAt ? : number;
-    profile ? : any;
-    services ? : any;
+    _id?: string;
+    username?: string;
+    emails?: UserEmail[];
+    createdAt?: number;
+    profile?: any;
+    services?: any;
   }
 
   function user(): User;
@@ -1007,12 +1004,12 @@ declare module Meteor {
   /** Error **/
   var Error: ErrorStatic;
   interface ErrorStatic {
-    new(error: string | number, reason ? : string, details ? : string): Error;
+    new(error: string | number, reason?: string, details?: string): Error;
   }
   interface Error {
     error: string | number;
-    reason ? : string;
-    details ? : string;
+    reason?: string;
+    details?: string;
   }
   /** Error **/
 
@@ -1021,17 +1018,17 @@ declare module Meteor {
 
   function call(name: string, ...args: any[]): any;
 
-  function apply(name: string, args: EJSONable[], options ? : {
-    wait ? : boolean;
-    onResultReceived ? : Function;
-  }, asyncCallback ? : Function): any;
+  function apply(name: string, args: EJSONable[], options?: {
+    wait?: boolean;
+    onResultReceived?: Function;
+  }, asyncCallback?: Function): any;
   /** Method **/
 
   /** Url **/
-  function absoluteUrl(path ? : string, options ? : {
-    secure ? : boolean;
-    replaceLocalhost ? : boolean;
-    rootUrl ? : string;
+  function absoluteUrl(path?: string, options?: {
+    secure?: boolean;
+    replaceLocalhost?: boolean;
+    rootUrl?: string;
   }): string;
   /** Url **/
 
@@ -1050,7 +1047,7 @@ declare module Meteor {
   /** utils **/
   function startup(func: Function): void;
 
-  function wrapAsync(func: Function, context ? : Object): any;
+  function wrapAsync(func: Function, context?: Object): any;
   /** utils **/
 
   /** Pub/Sub **/
@@ -1065,7 +1062,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-
   module Meteor {
     /** Global props **/
     var isClient: boolean;
@@ -1087,12 +1083,12 @@ declare module "meteor/meteor" {
       verified: boolean;
     }
     interface User {
-      _id ? : string;
-      username ? : string;
-      emails ? : UserEmail[];
-      createdAt ? : number;
-      profile ? : any;
-      services ? : any;
+      _id?: string;
+      username?: string;
+      emails?: UserEmail[];
+      createdAt?: number;
+      profile?: any;
+      services?: any;
     }
 
     function user(): User;
@@ -1104,12 +1100,12 @@ declare module "meteor/meteor" {
     /** Error **/
     var Error: ErrorStatic;
     interface ErrorStatic {
-      new(error: string | number, reason ? : string, details ? : string): Error;
+      new(error: string | number, reason?: string, details?: string): Error;
     }
     interface Error {
       error: string | number;
-      reason ? : string;
-      details ? : string;
+      reason?: string;
+      details?: string;
     }
     /** Error **/
 
@@ -1118,17 +1114,17 @@ declare module "meteor/meteor" {
 
     function call(name: string, ...args: any[]): any;
 
-    function apply(name: string, args: EJSONable[], options ? : {
-      wait ? : boolean;
-      onResultReceived ? : Function;
-    }, asyncCallback ? : Function): any;
+    function apply(name: string, args: EJSONable[], options?: {
+      wait?: boolean;
+      onResultReceived?: Function;
+    }, asyncCallback?: Function): any;
     /** Method **/
 
     /** Url **/
-    function absoluteUrl(path ? : string, options ? : {
-      secure ? : boolean;
-      replaceLocalhost ? : boolean;
-      rootUrl ? : string;
+    function absoluteUrl(path?: string, options?: {
+      secure?: boolean;
+      replaceLocalhost?: boolean;
+      rootUrl?: string;
     }): string;
     /** Url **/
 
@@ -1147,7 +1143,7 @@ declare module "meteor/meteor" {
     /** utils **/
     function startup(func: Function): void;
 
-    function wrapAsync(func: Function, context ? : Object): any;
+    function wrapAsync(func: Function, context?: Object): any;
     /** utils **/
 
     /** Pub/Sub **/
@@ -1165,47 +1161,47 @@ declare module "meteor/meteor" {
 declare module Meteor {
   /** Login **/
   interface LoginWithExternalServiceOptions {
-    requestPermissions ? : string[];
-    requestOfflineToken ? : Boolean;
-    forceApprovalPrompt ? : Boolean;
-    loginUrlParameters ? : Object;
-    redirectUrl ? : string;
-    loginHint ? : string;
-    loginStyle ? : string;
+    requestPermissions?: string[];
+    requestOfflineToken?: Boolean;
+    forceApprovalPrompt?: Boolean;
+    loginUrlParameters?: Object;
+    redirectUrl?: string;
+    loginHint?: string;
+    loginStyle?: string;
   }
 
-  function loginWithMeteorDeveloperAccount(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithMeteorDeveloperAccount(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-  function loginWithFacebook(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithFacebook(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-  function loginWithGithub(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithGithub(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-  function loginWithGoogle(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithGoogle(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-  function loginWithMeetup(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithMeetup(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-  function loginWithTwitter(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithTwitter(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-  function loginWithWeibo(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+  function loginWithWeibo(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
   function loggingIn(): boolean;
 
-  function loginWith < ExternalService > (options ? : {
-    requestPermissions ? : string[];
-    requestOfflineToken ? : boolean;
-    loginUrlParameters ? : Object;
-    userEmail ? : string;
-    loginStyle ? : string;
-    redirectUrl ? : string;
-  }, callback ? : Function): void;
+  function loginWith < ExternalService > (options?: {
+    requestPermissions?: string[];
+    requestOfflineToken?: boolean;
+    loginUrlParameters?: Object;
+    userEmail?: string;
+    loginStyle?: string;
+    redirectUrl?: string;
+  }, callback?: Function): void;
 
-  function loginWithPassword(user: Object | string, password: string, callback ? : Function): void;
+  function loginWithPassword(user: Object | string, password: string, callback?: Function): void;
 
-  function loginWithToken(token: string, callback ? : Function): void;
+  function loginWithToken(token: string, callback?: Function): void;
 
-  function logout(callback ? : Function): void;
+  function logout(callback?: Function): void;
 
-  function logoutOtherClients(callback ? : Function): void;
+  function logoutOtherClients(callback?: Function): void;
   /** Login **/
 
   /** Event **/
@@ -1222,7 +1218,7 @@ declare module Meteor {
     isDefaultPrevented(): boolean;
   }
   interface EventHandlerFunction extends Function {
-    (event ? : Meteor.Event, templateInstance ? : Blaze.TemplateInstance): void;
+    (event?: Meteor.Event, templateInstance?: Blaze.TemplateInstance): void;
   }
   interface EventMap {
     [id: string]: Meteor.EventHandlerFunction;
@@ -1245,51 +1241,50 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-
   module Meteor {
     /** Login **/
     interface LoginWithExternalServiceOptions {
-      requestPermissions ? : string[];
-      requestOfflineToken ? : Boolean;
-      forceApprovalPrompt ? : Boolean;
-      loginUrlParameters ? : Object;
-      redirectUrl ? : string;
-      loginHint ? : string;
-      loginStyle ? : string;
+      requestPermissions?: string[];
+      requestOfflineToken?: Boolean;
+      forceApprovalPrompt?: Boolean;
+      loginUrlParameters?: Object;
+      redirectUrl?: string;
+      loginHint?: string;
+      loginStyle?: string;
     }
 
-    function loginWithMeteorDeveloperAccount(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithMeteorDeveloperAccount(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-    function loginWithFacebook(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithFacebook(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-    function loginWithGithub(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithGithub(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-    function loginWithGoogle(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithGoogle(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-    function loginWithMeetup(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithMeetup(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-    function loginWithTwitter(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithTwitter(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
-    function loginWithWeibo(options ? : Meteor.LoginWithExternalServiceOptions, callback ? : Function): void;
+    function loginWithWeibo(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
 
     function loggingIn(): boolean;
 
-    function loginWith < ExternalService > (options ? : {
-      requestPermissions ? : string[];
-      requestOfflineToken ? : boolean;
-      loginUrlParameters ? : Object;
-      userEmail ? : string;
-      loginStyle ? : string;
-      redirectUrl ? : string;
-    }, callback ? : Function): void;
+    function loginWith < ExternalService > (options?: {
+      requestPermissions?: string[];
+      requestOfflineToken?: boolean;
+      loginUrlParameters?: Object;
+      userEmail?: string;
+      loginStyle?: string;
+      redirectUrl?: string;
+    }, callback?: Function): void;
 
-    function loginWithPassword(user: Object | string, password: string, callback ? : Function): void;
+    function loginWithPassword(user: Object | string, password: string, callback?: Function): void;
 
-    function loginWithToken(token: string, callback ? : Function): void;
+    function loginWithToken(token: string, callback?: Function): void;
 
-    function logout(callback ? : Function): void;
+    function logout(callback?: Function): void;
 
-    function logoutOtherClients(callback ? : Function): void;
+    function logoutOtherClients(callback?: Function): void;
     /** Login **/
 
     /** Event **/
@@ -1306,7 +1301,7 @@ declare module "meteor/meteor" {
       isDefaultPrevented(): boolean;
     }
     interface EventHandlerFunction extends Function {
-      (event ? : Meteor.Event, templateInstance ? : Blaze.TemplateInstance): void;
+      (event?: Meteor.Event, templateInstance?: Blaze.TemplateInstance): void;
     }
     interface EventMap {
       [id: string]: Meteor.EventHandlerFunction;
@@ -1400,58 +1395,58 @@ declare module Mongo {
 
   var Collection: CollectionStatic;
   interface CollectionStatic {
-    new < T > (name: string, options ? : {
-      connection ? : Object;
-      idGeneration ? : string;
-      transform ? : Function;
+    new < T > (name: string, options?: {
+      connection?: Object;
+      idGeneration?: string;
+      transform?: Function;
     }): Collection < T > ;
   }
   interface Collection < T > {
     allow(options: {
-      insert ? : (userId: string, doc: T) => boolean;
-      update ? : (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
-      remove ? : (userId: string, doc: T) => boolean;
-      fetch ? : string[];
-      transform ? : Function;
+      insert?: (userId: string, doc: T) => boolean;
+      update?: (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
+      remove?: (userId: string, doc: T) => boolean;
+      fetch?: string[];
+      transform?: Function;
     }): boolean;
     deny(options: {
-      insert ? : (userId: string, doc: T) => boolean;
-      update ? : (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
-      remove ? : (userId: string, doc: T) => boolean;
-      fetch ? : string[];
-      transform ? : Function;
+      insert?: (userId: string, doc: T) => boolean;
+      update?: (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
+      remove?: (userId: string, doc: T) => boolean;
+      fetch?: string[];
+      transform?: Function;
     }): boolean;
-    find(selector ? : Selector | ObjectID | string, options ? : {
-      sort ? : SortSpecifier;
-      skip ? : number;
-      limit ? : number;
-      fields ? : FieldSpecifier;
-      reactive ? : boolean;
-      transform ? : Function;
+    find(selector?: Selector | ObjectID | string, options?: {
+      sort?: SortSpecifier;
+      skip?: number;
+      limit?: number;
+      fields?: FieldSpecifier;
+      reactive?: boolean;
+      transform?: Function;
     }): Cursor < T > ;
-    findOne(selector ? : Selector | ObjectID | string, options ? : {
-      sort ? : SortSpecifier;
-      skip ? : number;
-      fields ? : FieldSpecifier;
-      reactive ? : boolean;
-      transform ? : Function;
+    findOne(selector?: Selector | ObjectID | string, options?: {
+      sort?: SortSpecifier;
+      skip?: number;
+      fields?: FieldSpecifier;
+      reactive?: boolean;
+      transform?: Function;
     }): T;
-    insert(doc: T, callback ? : Function): string;
+    insert(doc: T, callback?: Function): string;
     rawCollection(): any;
     rawDatabase(): any;
-    remove(selector: Selector | ObjectID | string, callback ? : Function): number;
-    update(selector: Selector | ObjectID | string, modifier: Modifier, options ? : {
-      multi ? : boolean;
-      upsert ? : boolean;
-    }, callback ? : Function): number;
-    upsert(selector: Selector | ObjectID | string, modifier: Modifier, options ? : {
-      multi ? : boolean;
-    }, callback ? : Function): {
-      numberAffected ? : number;insertedId ? : string;
+    remove(selector: Selector | ObjectID | string, callback?: Function): number;
+    update(selector: Selector | ObjectID | string, modifier: Modifier, options?: {
+      multi?: boolean;
+      upsert?: boolean;
+    }, callback?: Function): number;
+    upsert(selector: Selector | ObjectID | string, modifier: Modifier, options?: {
+      multi?: boolean;
+    }, callback?: Function): {
+      numberAffected?: number;insertedId?: string;
     };
     _ensureIndex(keys: {
       [key: string]: number | string
-    } | string, options ? : {
+    } | string, options?: {
       [key: string]: any
     }): void;
     _dropIndex(keys: {
@@ -1464,33 +1459,33 @@ declare module Mongo {
     new < T > (): Cursor < T > ;
   }
   interface ObserveCallbacks {
-    added ? (document: Object) : void;
-    addedAt ? (document: Object, atIndex: number, before: Object) : void;
-    changed ? (newDocument: Object, oldDocument: Object) : void;
-    changedAt ? (newDocument: Object, oldDocument: Object, indexAt: number) : void;
-    removed ? (oldDocument: Object) : void;
-    removedAt ? (oldDocument: Object, atIndex: number) : void;
-    movedTo ? (document: Object, fromIndex: number, toIndex: number, before: Object) : void;
+    added?(document: Object) : void;
+    addedAt?(document: Object, atIndex: number, before: Object) : void;
+    changed?(newDocument: Object, oldDocument: Object) : void;
+    changedAt?(newDocument: Object, oldDocument: Object, indexAt: number) : void;
+    removed?(oldDocument: Object) : void;
+    removedAt?(oldDocument: Object, atIndex: number) : void;
+    movedTo?(document: Object, fromIndex: number, toIndex: number, before: Object) : void;
   }
   interface ObserveChangesCallbacks {
-    added ? (id: string, fields: Object) : void;
-    addedBefore ? (id: string, fields: Object, before: Object) : void;
-    changed ? (id: string, fields: Object) : void;
-    movedBefore ? (id: string, before: Object) : void;
-    removed ? (id: string) : void;
+    added?(id: string, fields: Object) : void;
+    addedBefore?(id: string, fields: Object, before: Object) : void;
+    changed?(id: string, fields: Object) : void;
+    movedBefore?(id: string, before: Object) : void;
+    removed?(id: string) : void;
   }
   interface Cursor < T > {
-    count(applySkipLimit ? : boolean): number;
+    count(applySkipLimit?: boolean): number;
     fetch(): Array < T > ;
-    forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg ? : any): void;
-    map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg ? : any): Array < U > ;
+    forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg?: any): void;
+    map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg?: any): Array < U > ;
     observe(callbacks: ObserveCallbacks): Meteor.LiveQueryHandle;
     observeChanges(callbacks: ObserveChangesCallbacks): Meteor.LiveQueryHandle;
   }
 
   var ObjectID: ObjectIDStatic;
   interface ObjectIDStatic {
-    new(hexString ? : string): ObjectID;
+    new(hexString?: string): ObjectID;
   }
   interface ObjectID {}
 }
@@ -1509,58 +1504,58 @@ declare module "meteor/mongo" {
 
     var Collection: CollectionStatic;
     interface CollectionStatic {
-      new < T > (name: string, options ? : {
-        connection ? : Object;
-        idGeneration ? : string;
-        transform ? : Function;
+      new < T > (name: string, options?: {
+        connection?: Object;
+        idGeneration?: string;
+        transform?: Function;
       }): Collection < T > ;
     }
     interface Collection < T > {
       allow(options: {
-        insert ? : (userId: string, doc: T) => boolean;
-        update ? : (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
-        remove ? : (userId: string, doc: T) => boolean;
-        fetch ? : string[];
-        transform ? : Function;
+        insert?: (userId: string, doc: T) => boolean;
+        update?: (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
+        remove?: (userId: string, doc: T) => boolean;
+        fetch?: string[];
+        transform?: Function;
       }): boolean;
       deny(options: {
-        insert ? : (userId: string, doc: T) => boolean;
-        update ? : (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
-        remove ? : (userId: string, doc: T) => boolean;
-        fetch ? : string[];
-        transform ? : Function;
+        insert?: (userId: string, doc: T) => boolean;
+        update?: (userId: string, doc: T, fieldNames: string[], modifier: any) => boolean;
+        remove?: (userId: string, doc: T) => boolean;
+        fetch?: string[];
+        transform?: Function;
       }): boolean;
-      find(selector ? : Selector | ObjectID | string, options ? : {
-        sort ? : SortSpecifier;
-        skip ? : number;
-        limit ? : number;
-        fields ? : FieldSpecifier;
-        reactive ? : boolean;
-        transform ? : Function;
+      find(selector?: Selector | ObjectID | string, options?: {
+        sort?: SortSpecifier;
+        skip?: number;
+        limit?: number;
+        fields?: FieldSpecifier;
+        reactive?: boolean;
+        transform?: Function;
       }): Cursor < T > ;
-      findOne(selector ? : Selector | ObjectID | string, options ? : {
-        sort ? : SortSpecifier;
-        skip ? : number;
-        fields ? : FieldSpecifier;
-        reactive ? : boolean;
-        transform ? : Function;
+      findOne(selector?: Selector | ObjectID | string, options?: {
+        sort?: SortSpecifier;
+        skip?: number;
+        fields?: FieldSpecifier;
+        reactive?: boolean;
+        transform?: Function;
       }): T;
-      insert(doc: T, callback ? : Function): string;
+      insert(doc: T, callback?: Function): string;
       rawCollection(): any;
       rawDatabase(): any;
-      remove(selector: Selector | ObjectID | string, callback ? : Function): number;
-      update(selector: Selector | ObjectID | string, modifier: Modifier, options ? : {
-        multi ? : boolean;
-        upsert ? : boolean;
-      }, callback ? : Function): number;
-      upsert(selector: Selector | ObjectID | string, modifier: Modifier, options ? : {
-        multi ? : boolean;
-      }, callback ? : Function): {
-        numberAffected ? : number;insertedId ? : string;
+      remove(selector: Selector | ObjectID | string, callback?: Function): number;
+      update(selector: Selector | ObjectID | string, modifier: Modifier, options?: {
+        multi?: boolean;
+        upsert?: boolean;
+      }, callback?: Function): number;
+      upsert(selector: Selector | ObjectID | string, modifier: Modifier, options?: {
+        multi?: boolean;
+      }, callback?: Function): {
+        numberAffected?: number;insertedId?: string;
       };
       _ensureIndex(keys: {
         [key: string]: number | string
-      } | string, options ? : {
+      } | string, options?: {
         [key: string]: any
       }): void;
       _dropIndex(keys: {
@@ -1573,33 +1568,33 @@ declare module "meteor/mongo" {
       new < T > (): Cursor < T > ;
     }
     interface ObserveCallbacks {
-      added ? (document: Object) : void;
-      addedAt ? (document: Object, atIndex: number, before: Object) : void;
-      changed ? (newDocument: Object, oldDocument: Object) : void;
-      changedAt ? (newDocument: Object, oldDocument: Object, indexAt: number) : void;
-      removed ? (oldDocument: Object) : void;
-      removedAt ? (oldDocument: Object, atIndex: number) : void;
-      movedTo ? (document: Object, fromIndex: number, toIndex: number, before: Object) : void;
+      added?(document: Object) : void;
+      addedAt?(document: Object, atIndex: number, before: Object) : void;
+      changed?(newDocument: Object, oldDocument: Object) : void;
+      changedAt?(newDocument: Object, oldDocument: Object, indexAt: number) : void;
+      removed?(oldDocument: Object) : void;
+      removedAt?(oldDocument: Object, atIndex: number) : void;
+      movedTo?(document: Object, fromIndex: number, toIndex: number, before: Object) : void;
     }
     interface ObserveChangesCallbacks {
-      added ? (id: string, fields: Object) : void;
-      addedBefore ? (id: string, fields: Object, before: Object) : void;
-      changed ? (id: string, fields: Object) : void;
-      movedBefore ? (id: string, before: Object) : void;
-      removed ? (id: string) : void;
+      added?(id: string, fields: Object) : void;
+      addedBefore?(id: string, fields: Object, before: Object) : void;
+      changed?(id: string, fields: Object) : void;
+      movedBefore?(id: string, before: Object) : void;
+      removed?(id: string) : void;
     }
     interface Cursor < T > {
-      count(applySkipLimit ? : boolean): number;
+      count(applySkipLimit?: boolean): number;
       fetch(): Array < T > ;
-      forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg ? : any): void;
-      map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg ? : any): Array < U > ;
+      forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg?: any): void;
+      map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg?: any): Array < U > ;
       observe(callbacks: ObserveCallbacks): Meteor.LiveQueryHandle;
       observeChanges(callbacks: ObserveChangesCallbacks): Meteor.LiveQueryHandle;
     }
 
     var ObjectID: ObjectIDStatic;
     interface ObjectIDStatic {
-      new(hexString ? : string): ObjectID;
+      new(hexString?: string): ObjectID;
     }
     interface ObjectID {}
   }
@@ -1607,30 +1602,30 @@ declare module "meteor/mongo" {
 
 declare module Mongo {
   interface AllowDenyOptions {
-    insert ? : (userId: string, doc: any) => boolean;
-    update ? : (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
-    remove ? : (userId: string, doc: any) => boolean;
-    fetch ? : string[];
-    transform ? : Function;
+    insert?: (userId: string, doc: any) => boolean;
+    update?: (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
+    remove?: (userId: string, doc: any) => boolean;
+    fetch?: string[];
+    transform?: Function;
   }
 }
 
 declare module "meteor/mongo" {
   module Mongo {
     interface AllowDenyOptions {
-      insert ? : (userId: string, doc: any) => boolean;
-      update ? : (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
-      remove ? : (userId: string, doc: any) => boolean;
-      fetch ? : string[];
-      transform ? : Function;
+      insert?: (userId: string, doc: any) => boolean;
+      update?: (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
+      remove?: (userId: string, doc: any) => boolean;
+      fetch?: string[];
+      transform?: Function;
     }
   }
 }
 
 declare module Random {
-  function id(numberOfChars ? : number): string;
+  function id(numberOfChars?: number): string;
 
-  function secret(numberOfChars ? : number): string;
+  function secret(numberOfChars?: number): string;
 
   function fraction(): number;
   // @param numberOfDigits, @returns a random hex string of the given length
@@ -1643,9 +1638,9 @@ declare module Random {
 
 declare module "meteor/random" {
   module Random {
-    function id(numberOfChars ? : number): string;
+    function id(numberOfChars?: number): string;
 
-    function secret(numberOfChars ? : number): string;
+    function secret(numberOfChars?: number): string;
 
     function fraction(): number;
     // @param numberOfDigits, @returns a random hex string of the given length
@@ -1659,7 +1654,7 @@ declare module "meteor/random" {
 
 declare var ReactiveVar: ReactiveVarStatic;
 interface ReactiveVarStatic {
-  new < T > (initialValue: T, equalsFunc ? : Function): ReactiveVar < T > ;
+  new < T > (initialValue: T, equalsFunc?: Function): ReactiveVar < T > ;
 }
 interface ReactiveVar < T > {
   get(): T;
@@ -1669,7 +1664,7 @@ interface ReactiveVar < T > {
 declare module "meteor/reactive-var" {
   var ReactiveVar: ReactiveVarStatic;
   interface ReactiveVarStatic {
-    new < T > (initialValue: T, equalsFunc ? : Function): ReactiveVar < T > ;
+    new < T > (initialValue: T, equalsFunc?: Function): ReactiveVar < T > ;
   }
   interface ReactiveVar < T > {
     get(): T;
@@ -1688,7 +1683,6 @@ declare module Session {
 }
 
 declare module "meteor/session" {
-
   module Session {
     function equals(key: string, value: string | number | boolean | any): boolean;
 
@@ -1702,16 +1696,15 @@ declare module "meteor/session" {
 
 declare var Template: TemplateStatic;
 interface TemplateStatic extends Blaze.TemplateStatic {
-  new(viewName ? : string, renderFunction ? : Function): Blaze.Template;
+  new(viewName?: string, renderFunction?: Function): Blaze.Template;
   body: Blaze.Template;
   [index: string]: any | Blaze.Template;
 }
 
 declare module "meteor/templating" {
-
   var Template: TemplateStatic;
   interface TemplateStatic extends Blaze.TemplateStatic {
-    new(viewName ? : string, renderFunction ? : Function): Blaze.Template;
+    new(viewName?: string, renderFunction?: Function): Blaze.Template;
     body: Blaze.Template;
     [index: string]: any | Blaze.Template;
   }
@@ -1726,26 +1719,26 @@ interface ITinytestAssertions {
   expect_fail(): void;
   fail(doc: Object): void;
   runId(): string;
-  equal < T > (actual: T, expected: T, message ? : string, not ? : boolean): void;
-  notEqual < T > (actual: T, expected: T, message ? : string): void;
-  instanceOf(obj: Object, klass: Function, message ? : string): void;
-  notInstanceOf(obj: Object, klass: Function, message ? : string): void;
-  matches(actual: any, regexp: RegExp, message ? : string): void;
-  notMatches(actual: any, regexp: RegExp, message ? : string): void;
-  throws(f: Function, expected ? : string | RegExp): void;
-  isTrue(v: boolean, msg ? : string): void;
-  isFalse(v: boolean, msg ? : string): void;
-  isNull(v: any, msg ? : string): void;
-  isNotNull(v: any, msg ? : string): void;
-  isUndefined(v: any, msg ? : string): void;
-  isNotUndefined(v: any, msg ? : string): void;
-  isNan(v: any, msg ? : string): void;
-  isNotNan(v: any, msg ? : string): void;
-  include < T > (s: Array < T > | Object | string, value: any, msg ? : string, not ? : boolean): void;
+  equal < T > (actual: T, expected: T, message?: string, not?: boolean): void;
+  notEqual < T > (actual: T, expected: T, message?: string): void;
+  instanceOf(obj: Object, klass: Function, message?: string): void;
+  notInstanceOf(obj: Object, klass: Function, message?: string): void;
+  matches(actual: any, regexp: RegExp, message?: string): void;
+  notMatches(actual: any, regexp: RegExp, message?: string): void;
+  throws(f: Function, expected?: string | RegExp): void;
+  isTrue(v: boolean, msg?: string): void;
+  isFalse(v: boolean, msg?: string): void;
+  isNull(v: any, msg?: string): void;
+  isNotNull(v: any, msg?: string): void;
+  isUndefined(v: any, msg?: string): void;
+  isNotUndefined(v: any, msg?: string): void;
+  isNan(v: any, msg?: string): void;
+  isNotNan(v: any, msg?: string): void;
+  include < T > (s: Array < T > | Object | string, value: any, msg?: string, not?: boolean): void;
 
-  notInclude < T > (s: Array < T > | Object | string, value: any, msg ? : string, not ? : boolean): void;
-  length(obj: ILengthAble, expected_length: number, msg ? : string): void;
-  _stringEqual(actual: string, expected: string, msg ? : string): void;
+  notInclude < T > (s: Array < T > | Object | string, value: any, msg?: string, not?: boolean): void;
+  length(obj: ILengthAble, expected_length: number, msg?: string): void;
+  _stringEqual(actual: string, expected: string, msg?: string): void;
 }
 
 declare module Tinytest {
@@ -1764,26 +1757,26 @@ declare module "meteor/tiny-test" {
     expect_fail(): void;
     fail(doc: Object): void;
     runId(): string;
-    equal < T > (actual: T, expected: T, message ? : string, not ? : boolean): void;
-    notEqual < T > (actual: T, expected: T, message ? : string): void;
-    instanceOf(obj: Object, klass: Function, message ? : string): void;
-    notInstanceOf(obj: Object, klass: Function, message ? : string): void;
-    matches(actual: any, regexp: RegExp, message ? : string): void;
-    notMatches(actual: any, regexp: RegExp, message ? : string): void;
-    throws(f: Function, expected ? : string | RegExp): void;
-    isTrue(v: boolean, msg ? : string): void;
-    isFalse(v: boolean, msg ? : string): void;
-    isNull(v: any, msg ? : string): void;
-    isNotNull(v: any, msg ? : string): void;
-    isUndefined(v: any, msg ? : string): void;
-    isNotUndefined(v: any, msg ? : string): void;
-    isNan(v: any, msg ? : string): void;
-    isNotNan(v: any, msg ? : string): void;
-    include < T > (s: Array < T > | Object | string, value: any, msg ? : string, not ? : boolean): void;
+    equal < T > (actual: T, expected: T, message?: string, not?: boolean): void;
+    notEqual < T > (actual: T, expected: T, message?: string): void;
+    instanceOf(obj: Object, klass: Function, message?: string): void;
+    notInstanceOf(obj: Object, klass: Function, message?: string): void;
+    matches(actual: any, regexp: RegExp, message?: string): void;
+    notMatches(actual: any, regexp: RegExp, message?: string): void;
+    throws(f: Function, expected?: string | RegExp): void;
+    isTrue(v: boolean, msg?: string): void;
+    isFalse(v: boolean, msg?: string): void;
+    isNull(v: any, msg?: string): void;
+    isNotNull(v: any, msg?: string): void;
+    isUndefined(v: any, msg?: string): void;
+    isNotUndefined(v: any, msg?: string): void;
+    isNan(v: any, msg?: string): void;
+    isNotNan(v: any, msg?: string): void;
+    include < T > (s: Array < T > | Object | string, value: any, msg?: string, not?: boolean): void;
 
-    notInclude < T > (s: Array < T > | Object | string, value: any, msg ? : string, not ? : boolean): void;
-    length(obj: ILengthAble, expected_length: number, msg ? : string): void;
-    _stringEqual(actual: string, expected: string, msg ? : string): void;
+    notInclude < T > (s: Array < T > | Object | string, value: any, msg?: string, not?: boolean): void;
+    length(obj: ILengthAble, expected_length: number, msg?: string): void;
+    _stringEqual(actual: string, expected: string, msg?: string): void;
   }
 
   module Tinytest {
@@ -1812,7 +1805,7 @@ declare module Tracker {
   }
   interface Dependency {
     changed(): void;
-    depend(fromComputation ? : Computation): boolean;
+    depend(fromComputation?: Computation): boolean;
     hasDependents(): boolean;
   }
 
@@ -1820,8 +1813,8 @@ declare module Tracker {
 
   function afterFlush(callback: Function): void;
 
-  function autorun(runFunc: (computation: Computation) => void, options ? : {
-    onError ? : Function;
+  function autorun(runFunc: (computation: Computation) => void, options?: {
+    onError?: Function;
   }): Computation;
 
   function flush(): void;
@@ -1851,7 +1844,7 @@ declare module "meteor/tracker" {
     }
     interface Dependency {
       changed(): void;
-      depend(fromComputation ? : Computation): boolean;
+      depend(fromComputation?: Computation): boolean;
       hasDependents(): boolean;
     }
 
@@ -1859,8 +1852,8 @@ declare module "meteor/tracker" {
 
     function afterFlush(callback: Function): void;
 
-    function autorun(runFunc: (computation: Computation) => void, options ? : {
-      onError ? : Function;
+    function autorun(runFunc: (computation: Computation) => void, options?: {
+      onError?: Function;
     }): Computation;
 
     function flush(): void;

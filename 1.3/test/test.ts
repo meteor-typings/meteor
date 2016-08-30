@@ -16,7 +16,7 @@ import {Session} from "meteor/session";
 import {HTTP} from "meteor/http";
 import {ReactiveVar} from "meteor/reactive-var";
 import {Accounts} from "meteor/accounts-base";
-import {BrowserPolicy} from "meteor/browser-policy";
+import {BrowserPolicy} from "meteor/browser-policy-common";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 
 var Rooms = new Mongo.Collection('rooms');
