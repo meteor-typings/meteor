@@ -2,3 +2,4 @@ node_modules/
 *.log
 out/
 typings
+.idea

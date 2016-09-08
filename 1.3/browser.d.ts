@@ -973,13 +973,16 @@ declare module Meteor {
   var isServer: boolean;
   var isProduction: boolean;
   var release: string;
-  var settings: {
+  /** Global props **/
+
+  /** Settings **/
+  interface Settings {
     public: {
       [id: string]: any
-    },
-    [id: string]: any
-  };
-  /** Global props **/
+    }, [id: string]: any
+  }
+  var settings: Settings;
+  /** Settings **/
 
   /** User **/
   interface UserEmail {
@@ -1069,13 +1072,16 @@ declare module "meteor/meteor" {
     var isServer: boolean;
     var isProduction: boolean;
     var release: string;
-    var settings: {
+    /** Global props **/
+
+    /** Settings **/
+    interface Settings {
       public: {
         [id: string]: any
-      },
-      [id: string]: any
-    };
-    /** Global props **/
+      }, [id: string]: any
+    }
+    var settings: Settings;
+    /** Settings **/
 
     /** User **/
     interface UserEmail {
