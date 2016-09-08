@@ -1051,6 +1051,8 @@ declare module Meteor {
   function startup(func: Function): void;
 
   function wrapAsync(func: Function, context?: Object): any;
+
+  function bindEnvironment(func: Function): any;
   /** utils **/
 
   /** Pub/Sub **/
@@ -1150,6 +1152,8 @@ declare module "meteor/meteor" {
     function startup(func: Function): void;
 
     function wrapAsync(func: Function, context?: Object): any;
+
+    function bindEnvironment(func: Function): any;
     /** utils **/
 
     /** Pub/Sub **/
