@@ -502,6 +502,7 @@ declare module Meteor {
   /** utils **/
   function startup(func: Function): void;
   function wrapAsync(func: Function, context?: Object): any;
+  function bindEnvironment(func: Function): any;
   /** utils **/
 
   /** Pub/Sub **/
