@@ -130,7 +130,7 @@ declare module Blaze {
     isRendered: boolean;
     isDestroyed: boolean;
     renderCount: number;
-    autorun(runFunc: Function): void;
+    autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
     onViewCreated(func: Function): void;
     onViewReady(func: Function): void;
     onViewDestroyed(func: Function): void;
@@ -188,7 +188,7 @@ declare module Blaze {
 
   interface TemplateInstance {
     $(selector: string): any;
-    autorun(runFunc: Function): Object;
+    autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
     data: Object;
     find(selector: string): HTMLElement;
     findAll(selector: string): HTMLElement[];

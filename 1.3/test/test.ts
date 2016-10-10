@@ -728,3 +728,4 @@ DDPRateLimiter.addRule({ userId: 'foo' }, 5, 1000);
 
 DDPRateLimiter.addRule((userId: string) => userId =='foo', 5, 1000);
 
+Template.instance().autorun(() => {}).stop();

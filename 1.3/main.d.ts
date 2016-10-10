@@ -213,6 +213,8 @@ declare module Accounts {
 }
 
 declare module "meteor/accounts-base" {
+
+
   interface EmailFields {
     from?: () => string;
     subject?: (user: Meteor.User) => string;
@@ -290,7 +292,7 @@ declare module Blaze {
     isRendered: boolean;
     isDestroyed: boolean;
     renderCount: number;
-    autorun(runFunc: Function): void;
+    autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
     onViewCreated(func: Function): void;
     onViewReady(func: Function): void;
     onViewDestroyed(func: Function): void;
@@ -348,7 +350,7 @@ declare module Blaze {
 
   interface TemplateInstance {
     $(selector: string): any;
-    autorun(runFunc: Function): Object;
+    autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
     data: Object;
     find(selector: string): HTMLElement;
     findAll(selector: string): HTMLElement[];
@@ -385,6 +387,7 @@ declare module Blaze {
 }
 
 declare module "meteor/blaze" {
+
   module Blaze {
     var View: ViewStatic;
 
@@ -399,7 +402,7 @@ declare module "meteor/blaze" {
       isRendered: boolean;
       isDestroyed: boolean;
       renderCount: number;
-      autorun(runFunc: Function): void;
+      autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
       onViewCreated(func: Function): void;
       onViewReady(func: Function): void;
       onViewDestroyed(func: Function): void;
@@ -457,7 +460,7 @@ declare module "meteor/blaze" {
 
     interface TemplateInstance {
       $(selector: string): any;
-      autorun(runFunc: Function): Object;
+      autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
       data: Object;
       find(selector: string): HTMLElement;
       findAll(selector: string): HTMLElement[];
@@ -678,6 +681,7 @@ declare module DDPCommon {
 }
 
 declare module "meteor/ddp" {
+
   module DDP {
     interface DDPStatic {
       subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;
@@ -1067,6 +1071,8 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
+
+
   module Meteor {
     /** Global props **/
     var isClient: boolean;
@@ -1251,6 +1257,7 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
+
   module Meteor {
     /** Login **/
     interface LoginWithExternalServiceOptions {
@@ -1693,6 +1700,7 @@ declare module Session {
 }
 
 declare module "meteor/session" {
+
   module Session {
     function equals(key: string, value: string | number | boolean | any): boolean;
 
@@ -1712,6 +1720,7 @@ interface TemplateStatic extends Blaze.TemplateStatic {
 }
 
 declare module "meteor/templating" {
+
   var Template: TemplateStatic;
   interface TemplateStatic extends Blaze.TemplateStatic {
     new(viewName?: string, renderFunction?: Function): Blaze.Template;
