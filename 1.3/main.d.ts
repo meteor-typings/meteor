@@ -997,7 +997,7 @@ declare module Meteor {
     _id?: string;
     username?: string;
     emails?: UserEmail[];
-    createdAt?: number;
+    createdAt?: Date;
     profile?: any;
     services?: any;
   }
