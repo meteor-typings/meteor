@@ -1,0 +1,15 @@
+{
+  "name": "meteor",
+  "version": "1.3",
+  "main": "main.d.ts",
+  "browser": "browser.d.ts",
+  "homepage": "https://meteor.com",
+  "global": true,
+  "files": [
+    "header.d.ts"
+  ],
+  "resolution": {
+    "main": "typings/main",
+    "browser": "typings/browser"
+  }
+}
