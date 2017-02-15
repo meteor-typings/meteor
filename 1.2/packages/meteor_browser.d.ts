@@ -28,6 +28,7 @@ declare module Meteor {
     redirectUrl?: string;
   }, callback?: Function): void;
   function loginWithPassword(user: Object | string, password: string, callback?: Function): void;
+  function loginWithToken(token:string, callback ? : Function): void;
   function logout(callback?: Function): void;
   function logoutOtherClients(callback?: Function): void;
   /** Login **/
