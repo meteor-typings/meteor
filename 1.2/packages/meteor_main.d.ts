@@ -12,7 +12,7 @@ declare module Meteor {
 
   function publish(name: string, func: Function): void;
 
-  function _debug(msg: any): void;
+  function _debug(...args: any[]): void;
 }
 
 interface Subscription {
