@@ -9,14 +9,19 @@ var concat = require('gulp-concat');
 var filter = require('gulp-filter');
 var ignore = require('gulp-ignore');
 
-gulp.task("prep_1_2_main", function() {
-  return gulp.src(["./1.2/packages/*.d.ts", "!./1.2/packages/*_browser.d.ts"])
+gulp.task("prep_1_2_main" +
+  "", function() {
+  return gulp.src(["./1.2/packages/*.d.ts"])
     .pipe(concat('main.d.ts'))
     .pipe(gulp.dest("1.2/"));
 });
 
-gulp.task("prep_1_2_browser", function() {
-  return gulp.src(["./1.2/packages/*.d.ts", "!./1.2/packages/*_main.d.ts"])
+gulp.task("prep_1_2_browser" +
+  "", function() {
+  return gulp.src([
+    "./1.2/packages/*.d.ts",
+    "!./1.2/packages/*_main.d.ts"
+  ])
     .pipe(ignore('*tools_main.d.ts'))
     .pipe(concat('browser.d.ts'))
     .pipe(gulp.dest("1.2/"));
@@ -61,14 +66,22 @@ function performChange(content) {
 }
 
 gulp.task("prep_1_3_main", function() {
-  return gulp.src(["./1.2/packages/*.d.ts", "!./1.2/packages/*_browser.d.ts", "./1.3/packages/*.d.ts", "!./1.3/packages/*_browser.d.ts"])
+  return gulp.src([
+    "./1.2/packages/*.d.ts",
+    "./1.3/packages/*.d.ts"
+  ])
     .pipe(change(performChange))
     .pipe(concat('main.d.ts'))
     .pipe(gulp.dest("1.3/"));
 });
 
 gulp.task("prep_1_3_browser", function() {
-  return gulp.src(["./1.2/packages/*.d.ts", "!./1.2/packages/*_browser.d.ts", "./1.3/packages/*.d.ts", "!./1.3/packages/*_main.d.ts"])
+  return gulp.src([
+    "./1.2/packages/*.d.ts",
+    "./1.3/packages/*.d.ts",
+    "!./1.2/packages/*_main.d.ts",
+    "!./1.3/packages/*_main.d.ts"
+  ])
     .pipe(ignore('*tools_main.d.ts'))
     .pipe(change(performChange))
     .pipe(concat('browser.d.ts'))
@@ -89,14 +102,24 @@ gulp.task("1_3", function(callback) {
 });
 
 gulp.task("prep_1_4_main", function() {
-  return gulp.src(["./1.2/packages/*.d.ts", "!./1.2/packages/*_browser.d.ts", "./1.3/packages/*.d.ts", "!./1.3/packages/*_browser.d.ts", "./1.4/packages/*.d.ts", "!./1.4/packages/*_browser.d.ts"])
+  return gulp.src([
+    "./1.2/packages/*.d.ts",
+    "./1.3/packages/*.d.ts",
+    "./1.4/packages/*.d.ts"])
     .pipe(change(performChange))
     .pipe(concat('main.d.ts'))
     .pipe(gulp.dest("1.4/"));
 });
 
 gulp.task("prep_1_4_browser", function() {
-  return gulp.src(["./1.2/packages/*.d.ts", "!./1.2/packages/*_browser.d.ts", "./1.3/packages/*.d.ts", "!./1.3/packages/*_main.d.ts", "./1.4/packages/*.d.ts", "!./1.4/packages/*_main.d.ts"])
+  return gulp.src([
+    "./1.2/packages/*.d.ts",
+    "./1.3/packages/*.d.ts",
+    "./1.4/packages/*.d.ts",
+    "!./1.2/packages/*_main.d.ts",
+    "!./1.3/packages/*_main.d.ts",
+    "!./1.4/packages/*_main.d.ts"
+  ])
     .pipe(ignore('*tools_main.d.ts'))
     .pipe(change(performChange))
     .pipe(concat('browser.d.ts'))

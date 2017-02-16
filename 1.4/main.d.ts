@@ -82,6 +82,74 @@ declare module "meteor/accounts-base" {
   }
 }
 
+declare module Accounts {
+  function changePassword(oldPassword: string, newPassword: string, callback?: Function): void;
+
+  function forgotPassword(options: {
+    email?: string;
+  }, callback?: Function): void;
+
+  function resetPassword(token: string, newPassword: string, callback?: Function): void;
+
+  function verifyEmail(token: string, callback?: Function): void;
+
+  function onEmailVerificationLink(callback: Function): void;
+
+  function onEnrollmentLink(callback: Function): void;
+
+  function onResetPasswordLink(callback: Function): void;
+
+  function loggingIn(): boolean;
+
+  function logout(callback?: Function): void;
+
+  function logoutOtherClients(callback?: Function): void;
+
+  var ui: {
+    config(options: {
+      requestPermissions?: Object;
+      requestOfflineToken?: Object;
+      forceApprovalPrompt?: Object;
+      passwordSignupFields?: string;
+    }): void;
+  };
+}
+
+declare module "meteor/accounts-base" {
+  module Accounts {
+    function changePassword(oldPassword: string, newPassword: string, callback?: Function): void;
+
+    function forgotPassword(options: {
+      email?: string;
+    }, callback?: Function): void;
+
+    function resetPassword(token: string, newPassword: string, callback?: Function): void;
+
+    function verifyEmail(token: string, callback?: Function): void;
+
+    function onEmailVerificationLink(callback: Function): void;
+
+    function onEnrollmentLink(callback: Function): void;
+
+    function onResetPasswordLink(callback: Function): void;
+
+    function loggingIn(): boolean;
+
+    function logout(callback?: Function): void;
+
+    function logoutOtherClients(callback?: Function): void;
+
+    var ui: {
+      config(options: {
+        requestPermissions?: Object;
+        requestOfflineToken?: Object;
+        forceApprovalPrompt?: Object;
+        passwordSignupFields?: string;
+      }): void;
+    };
+  }
+}
+
 interface EmailFields {
   from?: () => string;
   subject?: (user: Meteor.User) => string;
@@ -205,6 +273,224 @@ declare module "meteor/accounts-base" {
       methodName: string;
       methodArguments: any[];
     }
+  }
+}
+
+declare module Blaze {
+  var View: ViewStatic;
+
+  interface ViewStatic {
+    new(name?: string, renderFunction?: Function): View;
+  }
+
+  interface View {
+    name: string;
+    parentView: View;
+    isCreated: boolean;
+    isRendered: boolean;
+    isDestroyed: boolean;
+    renderCount: number;
+    autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
+    onViewCreated(func: Function): void;
+    onViewReady(func: Function): void;
+    onViewDestroyed(func: Function): void;
+    firstNode(): Node;
+    lastNode(): Node;
+    template: Template;
+    templateInstance(): TemplateInstance;
+  }
+  var currentView: View;
+
+  function isTemplate(value: any): boolean;
+
+  interface HelpersMap {
+    [key: string]: Function;
+  }
+
+  interface EventsMap {
+    [key: string]: Function;
+  }
+
+  var Template: TemplateStatic;
+
+  interface TemplateStatic {
+    new(viewName?: string, renderFunction?: Function): Template;
+
+    registerHelper(name: string, func: Function): void;
+    instance(): TemplateInstance;
+    currentData(): any;
+    parentData(numLevels: number): any;
+  }
+
+  interface Template {
+    viewName: string;
+    renderFunction: Function;
+    constructView(): View;
+    head: Template;
+    find(selector: string): HTMLElement;
+    findAll(selector: string): HTMLElement[];
+    $: any;
+    onCreated(cb: Function): void;
+    onRendered(cb: Function): void;
+    onDestroyed(cb: Function): void;
+    created: Function;
+    rendered: Function;
+    destroyed: Function;
+    helpers(helpersMap: HelpersMap): void;
+    events(eventsMap: EventsMap): void;
+  }
+
+  var TemplateInstance: TemplateInstanceStatic;
+
+  interface TemplateInstanceStatic {
+    new(view: View): TemplateInstance;
+  }
+
+  interface TemplateInstance {
+    $(selector: string): any;
+    autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
+    data: Object;
+    find(selector: string): HTMLElement;
+    findAll(selector: string): HTMLElement[];
+    firstNode: Object;
+    lastNode: Object;
+    subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
+    subscriptionsReady(): boolean;
+    view: Object;
+  }
+
+  function Each(argFunc: Function, contentFunc: Function, elseFunc?: Function): View;
+
+  function Unless(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
+
+  function If(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
+
+  function Let(bindings: Function, contentFunc: Function): View;
+
+  function With(data: Object | Function, contentFunc: Function): View;
+
+  function getData(elementOrView?: HTMLElement | View): Object;
+
+  function getView(element?: HTMLElement): View;
+
+  function remove(renderedView: View): void;
+
+  function render(templateOrView: Template | View, parentNode: Node, nextNode?: Node, parentView?: View): View;
+
+  function renderWithData(templateOrView: Template | View, data: Object | Function, parentNode: Node, nextNode?: Node, parentView?: View): View;
+
+  function toHTML(templateOrView: Template | View): string;
+
+  function toHTMLWithData(templateOrView: Template | View, data: Object | Function): string;
+}
+
+declare module "meteor/blaze" {
+  module Blaze {
+    var View: ViewStatic;
+
+    interface ViewStatic {
+      new(name?: string, renderFunction?: Function): View;
+    }
+
+    interface View {
+      name: string;
+      parentView: View;
+      isCreated: boolean;
+      isRendered: boolean;
+      isDestroyed: boolean;
+      renderCount: number;
+      autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
+      onViewCreated(func: Function): void;
+      onViewReady(func: Function): void;
+      onViewDestroyed(func: Function): void;
+      firstNode(): Node;
+      lastNode(): Node;
+      template: Template;
+      templateInstance(): TemplateInstance;
+    }
+    var currentView: View;
+
+    function isTemplate(value: any): boolean;
+
+    interface HelpersMap {
+      [key: string]: Function;
+    }
+
+    interface EventsMap {
+      [key: string]: Function;
+    }
+
+    var Template: TemplateStatic;
+
+    interface TemplateStatic {
+      new(viewName?: string, renderFunction?: Function): Template;
+
+      registerHelper(name: string, func: Function): void;
+      instance(): TemplateInstance;
+      currentData(): any;
+      parentData(numLevels: number): any;
+    }
+
+    interface Template {
+      viewName: string;
+      renderFunction: Function;
+      constructView(): View;
+      head: Template;
+      find(selector: string): HTMLElement;
+      findAll(selector: string): HTMLElement[];
+      $: any;
+      onCreated(cb: Function): void;
+      onRendered(cb: Function): void;
+      onDestroyed(cb: Function): void;
+      created: Function;
+      rendered: Function;
+      destroyed: Function;
+      helpers(helpersMap: HelpersMap): void;
+      events(eventsMap: EventsMap): void;
+    }
+
+    var TemplateInstance: TemplateInstanceStatic;
+
+    interface TemplateInstanceStatic {
+      new(view: View): TemplateInstance;
+    }
+
+    interface TemplateInstance {
+      $(selector: string): any;
+      autorun(runFunc: (computation: Tracker.Computation) => void): Tracker.Computation;
+      data: Object;
+      find(selector: string): HTMLElement;
+      findAll(selector: string): HTMLElement[];
+      firstNode: Object;
+      lastNode: Object;
+      subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
+      subscriptionsReady(): boolean;
+      view: Object;
+    }
+
+    function Each(argFunc: Function, contentFunc: Function, elseFunc?: Function): View;
+
+    function Unless(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
+
+    function If(conditionFunc: Function, contentFunc: Function, elseFunc?: Function): View;
+
+    function Let(bindings: Function, contentFunc: Function): View;
+
+    function With(data: Object | Function, contentFunc: Function): View;
+
+    function getData(elementOrView?: HTMLElement | View): Object;
+
+    function getView(element?: HTMLElement): View;
+
+    function remove(renderedView: View): void;
+
+    function render(templateOrView: Template | View, parentNode: Node, nextNode?: Node, parentView?: View): View;
+
+    function renderWithData(templateOrView: Template | View, data: Object | Function, parentNode: Node, nextNode?: Node, parentView?: View): View;
+
+    function toHTML(templateOrView: Template | View): string;
+
+    function toHTMLWithData(templateOrView: Template | View, data: Object | Function): string;
   }
 }
 
@@ -883,6 +1169,172 @@ declare module "meteor/meteor" {
 }
 
 declare module Meteor {
+  /** Login **/
+  interface LoginWithExternalServiceOptions {
+    requestPermissions?: string[];
+    requestOfflineToken?: Boolean;
+    forceApprovalPrompt?: Boolean;
+    loginUrlParameters?: Object;
+    redirectUrl?: string;
+    loginHint?: string;
+    loginStyle?: string;
+  }
+
+  function loginWithMeteorDeveloperAccount(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loginWithFacebook(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loginWithGithub(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loginWithGoogle(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loginWithMeetup(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loginWithTwitter(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loginWithWeibo(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+  function loggingIn(): boolean;
+
+  function loginWith < ExternalService > (options?: {
+    requestPermissions?: string[];
+    requestOfflineToken?: boolean;
+    loginUrlParameters?: Object;
+    userEmail?: string;
+    loginStyle?: string;
+    redirectUrl?: string;
+  }, callback?: Function): void;
+
+  function loginWithPassword(user: Object | string, password: string, callback?: Function): void;
+
+  function loginWithToken(token: string, callback?: Function): void;
+
+  function logout(callback?: Function): void;
+
+  function logoutOtherClients(callback?: Function): void;
+  /** Login **/
+
+  /** Event **/
+  interface Event {
+    type: string;
+    target: HTMLElement;
+    currentTarget: HTMLElement;
+    which: number;
+    stopPropagation(): void;
+    stopImmediatePropagation(): void;
+    preventDefault(): void;
+    isPropagationStopped(): boolean;
+    isImmediatePropagationStopped(): boolean;
+    isDefaultPrevented(): boolean;
+  }
+  interface EventHandlerFunction extends Function {
+    (event?: Meteor.Event, templateInstance?: Blaze.TemplateInstance): void;
+  }
+  interface EventMap {
+    [id: string]: Meteor.EventHandlerFunction;
+  }
+  /** Event **/
+
+  /** Connection **/
+  function reconnect(): void;
+
+  function disconnect(): void;
+  /** Connection **/
+
+  /** Status **/
+  function status(): DDP.DDPStatus;
+  /** Status **/
+
+  /** Pub/Sub **/
+  function subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
+  /** Pub/Sub **/
+}
+
+declare module "meteor/meteor" {
+  module Meteor {
+    /** Login **/
+    interface LoginWithExternalServiceOptions {
+      requestPermissions?: string[];
+      requestOfflineToken?: Boolean;
+      forceApprovalPrompt?: Boolean;
+      loginUrlParameters?: Object;
+      redirectUrl?: string;
+      loginHint?: string;
+      loginStyle?: string;
+    }
+
+    function loginWithMeteorDeveloperAccount(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loginWithFacebook(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loginWithGithub(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loginWithGoogle(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loginWithMeetup(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loginWithTwitter(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loginWithWeibo(options?: Meteor.LoginWithExternalServiceOptions, callback?: Function): void;
+
+    function loggingIn(): boolean;
+
+    function loginWith < ExternalService > (options?: {
+      requestPermissions?: string[];
+      requestOfflineToken?: boolean;
+      loginUrlParameters?: Object;
+      userEmail?: string;
+      loginStyle?: string;
+      redirectUrl?: string;
+    }, callback?: Function): void;
+
+    function loginWithPassword(user: Object | string, password: string, callback?: Function): void;
+
+    function loginWithToken(token: string, callback?: Function): void;
+
+    function logout(callback?: Function): void;
+
+    function logoutOtherClients(callback?: Function): void;
+    /** Login **/
+
+    /** Event **/
+    interface Event {
+      type: string;
+      target: HTMLElement;
+      currentTarget: HTMLElement;
+      which: number;
+      stopPropagation(): void;
+      stopImmediatePropagation(): void;
+      preventDefault(): void;
+      isPropagationStopped(): boolean;
+      isImmediatePropagationStopped(): boolean;
+      isDefaultPrevented(): boolean;
+    }
+    interface EventHandlerFunction extends Function {
+      (event?: Meteor.Event, templateInstance?: Blaze.TemplateInstance): void;
+    }
+    interface EventMap {
+      [id: string]: Meteor.EventHandlerFunction;
+    }
+    /** Event **/
+
+    /** Connection **/
+    function reconnect(): void;
+
+    function disconnect(): void;
+    /** Connection **/
+
+    /** Status **/
+    function status(): DDP.DDPStatus;
+    /** Status **/
+
+    /** Pub/Sub **/
+    function subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
+    /** Pub/Sub **/
+  }
+}
+
+declare module Meteor {
   /** Connection **/
   interface Connection {
     id: string;
@@ -1234,6 +1686,44 @@ declare module "meteor/reactive-var" {
   }
 }
 
+declare module Session {
+  function equals(key: string, value: string | number | boolean | any): boolean;
+
+  function get(key: string): any;
+
+  function set(key: string, value: EJSONable | any): void;
+
+  function setDefault(key: string, value: EJSONable | any): void;
+}
+
+declare module "meteor/session" {
+  module Session {
+    function equals(key: string, value: string | number | boolean | any): boolean;
+
+    function get(key: string): any;
+
+    function set(key: string, value: EJSONable | any): void;
+
+    function setDefault(key: string, value: EJSONable | any): void;
+  }
+}
+
+declare var Template: TemplateStatic;
+interface TemplateStatic extends Blaze.TemplateStatic {
+  new(viewName?: string, renderFunction?: Function): Blaze.Template;
+  body: Blaze.Template;
+  [index: string]: any | Blaze.Template;
+}
+
+declare module "meteor/templating" {
+  var Template: TemplateStatic;
+  interface TemplateStatic extends Blaze.TemplateStatic {
+    new(viewName?: string, renderFunction?: Function): Blaze.Template;
+    body: Blaze.Template;
+    [index: string]: any | Blaze.Template;
+  }
+}
+
 interface ILengthAble {
   length: number;
 }
@@ -1519,6 +2009,84 @@ declare module "meteor/tools" {
   var console: Console;
 }
 
+declare module Tracker {
+  function Computation(): void;
+  interface Computation {
+    firstRun: boolean;
+    invalidate(): void;
+    invalidated: boolean;
+    onInvalidate(callback: Function): void;
+    onStop(callback: Function): void;
+    stop(): void;
+    stopped: boolean;
+  }
+  var currentComputation: Computation;
+
+  var Dependency: DependencyStatic;
+  interface DependencyStatic {
+    new(): Dependency;
+  }
+  interface Dependency {
+    changed(): void;
+    depend(fromComputation?: Computation): boolean;
+    hasDependents(): boolean;
+  }
+
+  var active: boolean;
+
+  function afterFlush(callback: Function): void;
+
+  function autorun(runFunc: (computation: Computation) => void, options?: {
+    onError?: Function;
+  }): Computation;
+
+  function flush(): void;
+
+  function nonreactive(func: Function): void;
+
+  function onInvalidate(callback: Function): void;
+}
+
+declare module "meteor/tracker" {
+  module Tracker {
+    function Computation(): void;
+    interface Computation {
+      firstRun: boolean;
+      invalidate(): void;
+      invalidated: boolean;
+      onInvalidate(callback: Function): void;
+      onStop(callback: Function): void;
+      stop(): void;
+      stopped: boolean;
+    }
+    var currentComputation: Computation;
+
+    var Dependency: DependencyStatic;
+    interface DependencyStatic {
+      new(): Dependency;
+    }
+    interface Dependency {
+      changed(): void;
+      depend(fromComputation?: Computation): boolean;
+      hasDependents(): boolean;
+    }
+
+    var active: boolean;
+
+    function afterFlush(callback: Function): void;
+
+    function autorun(runFunc: (computation: Computation) => void, options?: {
+      onError?: Function;
+    }): Computation;
+
+    function flush(): void;
+
+    function nonreactive(func: Function): void;
+
+    function onInvalidate(callback: Function): void;
+  }
+}
+
 declare module Match {
   function Maybe(pattern: any): boolean;
 }
@@ -1542,6 +2110,16 @@ declare module "meteor/meteor" {
     var isDevelopment: boolean;
     var isTest: boolean;
     /** Global props **/
+  }
+}
+
+declare module Accounts {
+  function onLogout(func: Function): void;
+}
+
+declare module "meteor/accounts-base" {
+  module Accounts {
+    function onLogout(func: Function): void;
   }
 }
 
