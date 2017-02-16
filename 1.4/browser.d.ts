@@ -150,132 +150,6 @@ declare module "meteor/accounts-base" {
   }
 }
 
-interface EmailFields {
-  from?: () => string;
-  subject?: (user: Meteor.User) => string;
-  text?: (user: Meteor.User, url: string) => string;
-  html?: (user: Meteor.User, url: string) => string;
-}
-
-interface Header {
-  [id: string]: string;
-}
-
-interface EmailTemplates {
-  from: string;
-  siteName: string;
-  headers?: Header;
-  resetPassword: EmailFields;
-  enrollAccount: EmailFields;
-  verifyEmail: EmailFields;
-}
-
-declare module Accounts {
-  var emailTemplates: EmailTemplates;
-
-  function addEmail(userId: string, newEmail: string, verified?: boolean): void;
-
-  function removeEmail(userId: string, email: string): void;
-
-  function onCreateUser(func: Function): void;
-
-  function findUserByEmail(email: string): Object;
-
-  function findUserByUsername(username: string): Object;
-
-  function sendEnrollmentEmail(userId: string, email?: string): void;
-
-  function sendResetPasswordEmail(userId: string, email?: string): void;
-
-  function sendVerificationEmail(userId: string, email?: string): void;
-
-  function setUsername(userId: string, newUsername: string): void;
-
-  function setPassword(userId: string, newPassword: string, options?: {
-    logout?: Object;
-  }): void;
-
-  function validateNewUser(func: Function): boolean;
-
-  function validateLoginAttempt(func: Function): {
-    stop: () => void
-  };
-
-  interface IValidateLoginAttemptCbOpts {
-    type: string;
-    allowed: boolean;
-    error: Meteor.Error;
-    user: Meteor.User;
-    connection: Meteor.Connection;
-    methodName: string;
-    methodArguments: any[];
-  }
-}
-
-declare module "meteor/accounts-base" {
-  interface EmailFields {
-    from?: () => string;
-    subject?: (user: Meteor.User) => string;
-    text?: (user: Meteor.User, url: string) => string;
-    html?: (user: Meteor.User, url: string) => string;
-  }
-
-  interface Header {
-    [id: string]: string;
-  }
-
-  interface EmailTemplates {
-    from: string;
-    siteName: string;
-    headers?: Header;
-    resetPassword: EmailFields;
-    enrollAccount: EmailFields;
-    verifyEmail: EmailFields;
-  }
-
-  module Accounts {
-    var emailTemplates: EmailTemplates;
-
-    function addEmail(userId: string, newEmail: string, verified?: boolean): void;
-
-    function removeEmail(userId: string, email: string): void;
-
-    function onCreateUser(func: Function): void;
-
-    function findUserByEmail(email: string): Object;
-
-    function findUserByUsername(username: string): Object;
-
-    function sendEnrollmentEmail(userId: string, email?: string): void;
-
-    function sendResetPasswordEmail(userId: string, email?: string): void;
-
-    function sendVerificationEmail(userId: string, email?: string): void;
-
-    function setUsername(userId: string, newUsername: string): void;
-
-    function setPassword(userId: string, newPassword: string, options?: {
-      logout?: Object;
-    }): void;
-
-    function validateNewUser(func: Function): boolean;
-
-    function validateLoginAttempt(func: Function): {
-      stop: () => void
-    };
-
-    interface IValidateLoginAttemptCbOpts {
-      type: string;
-      allowed: boolean;
-      error: Meteor.Error;
-      user: Meteor.User;
-      connection: Meteor.Connection;
-      methodName: string;
-      methodArguments: any[];
-    }
-  }
-}
-
 declare module Blaze {
   var View: ViewStatic;
 
@@ -610,36 +484,6 @@ declare module "meteor/check" {
   function check(value: any, pattern: any): void;
 }
 
-declare module DDPRateLimiter {
-  interface Matcher {
-    type?: string | ((type: string) => boolean);
-    name?: string | ((name: string) => boolean);
-    userId?: string | ((userId: string) => boolean);
-    connectionId?: string | ((connectionId: string) => boolean);
-    clientAddress?: string | ((clientAddress: string) => boolean);
-  }
-
-  function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
-
-  function removeRule(ruleId: string): boolean;
-}
-
-declare module "meteor/ddp-rate-limiter" {
-  module DDPRateLimiter {
-    interface Matcher {
-      type?: string | ((type: string) => boolean);
-      name?: string | ((name: string) => boolean);
-      userId?: string | ((userId: string) => boolean);
-      connectionId?: string | ((connectionId: string) => boolean);
-      clientAddress?: string | ((clientAddress: string) => boolean);
-    }
-
-    function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
-
-    function removeRule(ruleId: string): boolean;
-  }
-}
-
 declare module DDP {
   interface DDPStatic {
     subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;
@@ -791,78 +635,6 @@ declare module "meteor/ejson" {
     }): string;
 
     function toJSONValue(val: EJSON): JSONable;
-  }
-}
-
-declare module Email {
-  function send(options: {
-    from?: string;
-    to?: string | string[];
-    cc?: string | string[];
-    bcc?: string | string[];
-    replyTo?: string | string[];
-    subject?: string;
-    text?: string;
-    html?: string;
-    headers?: Object;
-    attachments?: Object[];
-    mailComposer?: MailComposer;
-  }): void;
-}
-
-interface MailComposerOptions {
-  escapeSMTP: boolean;
-  encoding: string;
-  charset: string;
-  keepBcc: boolean;
-  forceEmbeddedImages: boolean;
-}
-
-declare var MailComposer: MailComposerStatic;
-interface MailComposerStatic {
-  new(options: MailComposerOptions): MailComposer;
-}
-interface MailComposer {
-  addHeader(name: string, value: string): void;
-  setMessageOption(from: string, to: string, body: string, html: string): void;
-  streamMessage(): void;
-  pipe(stream: any /** fs.WriteStream **/ ): void;
-}
-
-declare module "meteor/email" {
-  module Email {
-    function send(options: {
-      from?: string;
-      to?: string | string[];
-      cc?: string | string[];
-      bcc?: string | string[];
-      replyTo?: string | string[];
-      subject?: string;
-      text?: string;
-      html?: string;
-      headers?: Object;
-      attachments?: Object[];
-      mailComposer?: MailComposer;
-    }): void;
-  }
-
-  interface MailComposerOptions {
-    escapeSMTP: boolean;
-    encoding: string;
-    charset: string;
-    keepBcc: boolean;
-    forceEmbeddedImages: boolean;
-  }
-
-  var MailComposer: MailComposerStatic;
-  interface MailComposerStatic {
-    new(options: MailComposerOptions): MailComposer;
-  }
-  interface MailComposer {
-    addHeader(name: string, value: string): void;
-    setMessageOption(from: string, to: string, body: string, html: string): void;
-    streamMessage(): void;
-    pipe(stream: any /** fs.WriteStream **/ ): void;
   }
 }
 
@@ -1334,68 +1106,6 @@ declare module "meteor/meteor" {
   }
 }
 
-declare module Meteor {
-  /** Connection **/
-  interface Connection {
-    id: string;
-    close: Function;
-    onClose: Function;
-    clientAddress: string;
-    httpHeaders: Object;
-  }
-
-  function onConnection(callback: Function): void;
-  /** Connection **/
-
-  function publish(name: string, func: Function): void;
-
-  function _debug(...args: any[]): void;
-}
-
-interface Subscription {
-  added(collection: string, id: string, fields: Object): void;
-  changed(collection: string, id: string, fields: Object): void;
-  connection: Meteor.Connection;
-  error(error: Error): void;
-  onStop(func: Function): void;
-  ready(): void;
-  removed(collection: string, id: string): void;
-  stop(): void;
-  userId: string;
-}
-
-declare module "meteor/meteor" {
-  module Meteor {
-    /** Connection **/
-    interface Connection {
-      id: string;
-      close: Function;
-      onClose: Function;
-      clientAddress: string;
-      httpHeaders: Object;
-    }
-
-    function onConnection(callback: Function): void;
-    /** Connection **/
-
-    function publish(name: string, func: Function): void;
-
-    function _debug(...args: any[]): void;
-  }
-
-  interface Subscription {
-    added(collection: string, id: string, fields: Object): void;
-    changed(collection: string, id: string, fields: Object): void;
-    connection: Meteor.Connection;
-    error(error: Error): void;
-    onStop(func: Function): void;
-    ready(): void;
-    removed(collection: string, id: string): void;
-    stop(): void;
-    userId: string;
-  }
-}
-
 declare module Mongo {
   interface Selector {
     [key: string]: any;
@@ -1614,28 +1324,6 @@ declare module "meteor/mongo" {
   }
 }
 
-declare module Mongo {
-  interface AllowDenyOptions {
-    insert?: (userId: string, doc: any) => boolean;
-    update?: (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
-    remove?: (userId: string, doc: any) => boolean;
-    fetch?: string[];
-    transform?: Function;
-  }
-}
-
-declare module "meteor/mongo" {
-  module Mongo {
-    interface AllowDenyOptions {
-      insert?: (userId: string, doc: any) => boolean;
-      update?: (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
-      remove?: (userId: string, doc: any) => boolean;
-      fetch?: string[];
-      transform?: Function;
-    }
-  }
-}
-
 declare module Random {
   function id(numberOfChars?: number): string;
 
@@ -1800,215 +1488,6 @@ declare module "meteor/tiny-test" {
   }
 }
 
-declare module App {
-  function accessRule(pattern: string, options?: {
-    type?: string;
-    launchExternal?: boolean;
-  }): void;
-
-  function configurePlugin(id: string, config: Object): void;
-
-  function icons(icons: Object): void;
-
-  function info(options: {
-    id?: string;
-    version?: string;
-    name?: string;
-    description?: string;
-    author?: string;
-    email?: string;
-    website?: string;
-  }): void;
-
-  function launchScreens(launchScreens: Object): void;
-
-  function setPreference(name: string, value: string, platform?: string): void;
-}
-
-declare function execFileAsync(command: string, args?: any[], options?: {
-  cwd?: Object;
-  env?: Object;
-  stdio?: any[] | string;
-  destination?: any;
-  waitForClose?: string;
-}): any;
-declare function execFileSync(command: string, args?: any[], options?: {
-  cwd?: Object;
-  env?: Object;
-  stdio?: any[] | string;
-  destination?: any;
-  waitForClose?: string;
-}): String;
-
-declare module Assets {
-  function getBinary(assetPath: string, asyncCallback?: Function): EJSON;
-
-  function getText(assetPath: string, asyncCallback?: Function): string;
-
-  function absoluteFilePath(assetPath: string): string;
-}
-
-declare module Cordova {
-  function depends(dependencies: {
-    [id: string]: string
-  }): void;
-}
-
-declare module Npm {
-  function depends(dependencies: {
-    [id: string]: string
-  }): void;
-
-  function require(name: string): any;
-}
-
-declare namespace Package {
-  function describe(options: {
-    summary?: string;
-    version?: string;
-    name?: string;
-    git?: string;
-    documentation?: string;
-    debugOnly?: boolean;
-    prodOnly?: boolean;
-    testOnly?: boolean;
-  }): void;
-
-  function onTest(func: (api: PackageAPI) => void): void;
-
-  function onUse(func: (api: PackageAPI) => void): void;
-
-  function registerBuildPlugin(options?: {
-    name?: string;
-    use?: string | string[];
-    sources?: string[];
-    npmDependencies?: Object;
-  }): void;
-}
-
-interface PackageAPI {
-  new(): PackageAPI;
-  addAssets(filenames: string | string[], architecture: string | string[]): void;
-  addFiles(filenames: string | string[], architecture?: string | string[], options?: {
-    bare?: boolean;
-  }): void;
-  export (exportedObjects: string | string[], architecture?: string | string[], exportOptions?: Object, testOnly?: boolean): void;
-  imply(packageNames: string | string[], architecture?: string | string[]): void;
-  use(packageNames: string | string[], architecture?: string | string[], options?: {
-    weak?: boolean;
-    unordered?: boolean;
-  }): void;
-  versionsFrom(meteorRelease: string | string[]): void;
-}
-
-declare var console: Console;
-
-declare module "meteor/tools" {
-  module App {
-    function accessRule(pattern: string, options?: {
-      type?: string;
-      launchExternal?: boolean;
-    }): void;
-
-    function configurePlugin(id: string, config: Object): void;
-
-    function icons(icons: Object): void;
-
-    function info(options: {
-      id?: string;
-      version?: string;
-      name?: string;
-      description?: string;
-      author?: string;
-      email?: string;
-      website?: string;
-    }): void;
-
-    function launchScreens(launchScreens: Object): void;
-
-    function setPreference(name: string, value: string, platform?: string): void;
-  }
-
-  function execFileAsync(command: string, args?: any[], options?: {
-    cwd?: Object;
-    env?: Object;
-    stdio?: any[] | string;
-    destination?: any;
-    waitForClose?: string;
-  }): any;
-
-  function execFileSync(command: string, args?: any[], options?: {
-    cwd?: Object;
-    env?: Object;
-    stdio?: any[] | string;
-    destination?: any;
-    waitForClose?: string;
-  }): String;
-
-  module Assets {
-    function getBinary(assetPath: string, asyncCallback?: Function): EJSON;
-
-    function getText(assetPath: string, asyncCallback?: Function): string;
-
-    function absoluteFilePath(assetPath: string): string;
-  }
-
-  module Cordova {
-    function depends(dependencies: {
-      [id: string]: string
-    }): void;
-  }
-
-  module Npm {
-    function depends(dependencies: {
-      [id: string]: string
-    }): void;
-
-    function require(name: string): any;
-  }
-
-  namespace Package {
-    function describe(options: {
-      summary?: string;
-      version?: string;
-      name?: string;
-      git?: string;
-      documentation?: string;
-      debugOnly?: boolean;
-      prodOnly?: boolean;
-      testOnly?: boolean;
-    }): void;
-
-    function onTest(func: (api: PackageAPI) => void): void;
-
-    function onUse(func: (api: PackageAPI) => void): void;
-
-    function registerBuildPlugin(options?: {
-      name?: string;
-      use?: string | string[];
-      sources?: string[];
-      npmDependencies?: Object;
-    }): void;
-  }
-
-  interface PackageAPI {
-    new(): PackageAPI;
-    addAssets(filenames: string | string[], architecture: string | string[]): void;
-    addFiles(filenames: string | string[], architecture?: string | string[], options?: {
-      bare?: boolean;
-    }): void;
-    export (exportedObjects: string | string[], architecture?: string | string[], exportOptions?: Object, testOnly?: boolean): void;
-    imply(packageNames: string | string[], architecture?: string | string[]): void;
-    use(packageNames: string | string[], architecture?: string | string[], options?: {
-      weak?: boolean;
-      unordered?: boolean;
-    }): void;
-    versionsFrom(meteorRelease: string | string[]): void;
-  }
-
-  var console: Console;
-}
-
 declare module Tracker {
   function Computation(): void;
   interface Computation {
@@ -2110,5 +1589,15 @@ declare module "meteor/meteor" {
     var isDevelopment: boolean;
     var isTest: boolean;
     /** Global props **/
+  }
+}
+
+declare module Accounts {
+  function onLogout(func: Function): void;
+}
+
+declare module "meteor/accounts-base" {
+  module Accounts {
+    function onLogout(func: Function): void;
   }
 }

@@ -2112,3 +2112,23 @@ declare module "meteor/meteor" {
     /** Global props **/
   }
 }
+
+declare module Accounts {
+  function onLogout(func: Function): void;
+}
+
+declare module "meteor/accounts-base" {
+  module Accounts {
+    function onLogout(func: Function): void;
+  }
+}
+
+declare module Accounts {
+  function onLogout(func: (user: Meteor.User, connection: Meteor.Connection) => void): void;
+}
+
+declare module "meteor/accounts-base" {
+  module Accounts {
+    function onLogout(func: (user: Meteor.User, connection: Meteor.Connection) => void): void;
+  }
+}

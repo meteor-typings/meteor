@@ -150,134 +150,6 @@ declare module "meteor/accounts-base" {
   }
 }
 
-interface EmailFields {
-  from?: () => string;
-  subject?: (user: Meteor.User) => string;
-  text?: (user: Meteor.User, url: string) => string;
-  html?: (user: Meteor.User, url: string) => string;
-}
-
-interface Header {
-  [id: string]: string;
-}
-
-interface EmailTemplates {
-  from: string;
-  siteName: string;
-  headers?: Header;
-  resetPassword: EmailFields;
-  enrollAccount: EmailFields;
-  verifyEmail: EmailFields;
-}
-
-declare module Accounts {
-  var emailTemplates: EmailTemplates;
-
-  function addEmail(userId: string, newEmail: string, verified?: boolean): void;
-
-  function removeEmail(userId: string, email: string): void;
-
-  function onCreateUser(func: Function): void;
-
-  function findUserByEmail(email: string): Object;
-
-  function findUserByUsername(username: string): Object;
-
-  function sendEnrollmentEmail(userId: string, email?: string): void;
-
-  function sendResetPasswordEmail(userId: string, email?: string): void;
-
-  function sendVerificationEmail(userId: string, email?: string): void;
-
-  function setUsername(userId: string, newUsername: string): void;
-
-  function setPassword(userId: string, newPassword: string, options?: {
-    logout?: Object;
-  }): void;
-
-  function validateNewUser(func: Function): boolean;
-
-  function validateLoginAttempt(func: Function): {
-    stop: () => void
-  };
-
-  interface IValidateLoginAttemptCbOpts {
-    type: string;
-    allowed: boolean;
-    error: Meteor.Error;
-    user: Meteor.User;
-    connection: Meteor.Connection;
-    methodName: string;
-    methodArguments: any[];
-  }
-}
-
-declare module "meteor/accounts-base" {
-
-
-  interface EmailFields {
-    from?: () => string;
-    subject?: (user: Meteor.User) => string;
-    text?: (user: Meteor.User, url: string) => string;
-    html?: (user: Meteor.User, url: string) => string;
-  }
-
-  interface Header {
-    [id: string]: string;
-  }
-
-  interface EmailTemplates {
-    from: string;
-    siteName: string;
-    headers?: Header;
-    resetPassword: EmailFields;
-    enrollAccount: EmailFields;
-    verifyEmail: EmailFields;
-  }
-
-  module Accounts {
-    var emailTemplates: EmailTemplates;
-
-    function addEmail(userId: string, newEmail: string, verified?: boolean): void;
-
-    function removeEmail(userId: string, email: string): void;
-
-    function onCreateUser(func: Function): void;
-
-    function findUserByEmail(email: string): Object;
-
-    function findUserByUsername(username: string): Object;
-
-    function sendEnrollmentEmail(userId: string, email?: string): void;
-
-    function sendResetPasswordEmail(userId: string, email?: string): void;
-
-    function sendVerificationEmail(userId: string, email?: string): void;
-
-    function setUsername(userId: string, newUsername: string): void;
-
-    function setPassword(userId: string, newPassword: string, options?: {
-      logout?: Object;
-    }): void;
-
-    function validateNewUser(func: Function): boolean;
-
-    function validateLoginAttempt(func: Function): {
-      stop: () => void
-    };
-
-    interface IValidateLoginAttemptCbOpts {
-      type: string;
-      allowed: boolean;
-      error: Meteor.Error;
-      user: Meteor.User;
-      connection: Meteor.Connection;
-      methodName: string;
-      methodArguments: any[];
-    }
-  }
-}
-
 declare module Blaze {
   var View: ViewStatic;
 
@@ -387,7 +259,6 @@ declare module Blaze {
 }
 
 declare module "meteor/blaze" {
-
   module Blaze {
     var View: ViewStatic;
 
@@ -613,36 +484,6 @@ declare module "meteor/check" {
   function check(value: any, pattern: any): void;
 }
 
-declare module DDPRateLimiter {
-  interface Matcher {
-    type?: string | ((type: string) => boolean);
-    name?: string | ((name: string) => boolean);
-    userId?: string | ((userId: string) => boolean);
-    connectionId?: string | ((connectionId: string) => boolean);
-    clientAddress?: string | ((clientAddress: string) => boolean);
-  }
-
-  function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
-
-  function removeRule(ruleId: string): boolean;
-}
-
-declare module "meteor/ddp-rate-limiter" {
-  module DDPRateLimiter {
-    interface Matcher {
-      type?: string | ((type: string) => boolean);
-      name?: string | ((name: string) => boolean);
-      userId?: string | ((userId: string) => boolean);
-      connectionId?: string | ((connectionId: string) => boolean);
-      clientAddress?: string | ((clientAddress: string) => boolean);
-    }
-
-    function addRule(matcher: Matcher, numRequests: number, timeInterval: number): string;
-
-    function removeRule(ruleId: string): boolean;
-  }
-}
-
 declare module DDP {
   interface DDPStatic {
     subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;
@@ -681,7 +522,6 @@ declare module DDPCommon {
 }
 
 declare module "meteor/ddp" {
-
   module DDP {
     interface DDPStatic {
       subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;
@@ -795,78 +635,6 @@ declare module "meteor/ejson" {
     }): string;
 
     function toJSONValue(val: EJSON): JSONable;
-  }
-}
-
-declare module Email {
-  function send(options: {
-    from?: string;
-    to?: string | string[];
-    cc?: string | string[];
-    bcc?: string | string[];
-    replyTo?: string | string[];
-    subject?: string;
-    text?: string;
-    html?: string;
-    headers?: Object;
-    attachments?: Object[];
-    mailComposer?: MailComposer;
-  }): void;
-}
-
-interface MailComposerOptions {
-  escapeSMTP: boolean;
-  encoding: string;
-  charset: string;
-  keepBcc: boolean;
-  forceEmbeddedImages: boolean;
-}
-
-declare var MailComposer: MailComposerStatic;
-interface MailComposerStatic {
-  new(options: MailComposerOptions): MailComposer;
-}
-interface MailComposer {
-  addHeader(name: string, value: string): void;
-  setMessageOption(from: string, to: string, body: string, html: string): void;
-  streamMessage(): void;
-  pipe(stream: any /** fs.WriteStream **/ ): void;
-}
-
-declare module "meteor/email" {
-  module Email {
-    function send(options: {
-      from?: string;
-      to?: string | string[];
-      cc?: string | string[];
-      bcc?: string | string[];
-      replyTo?: string | string[];
-      subject?: string;
-      text?: string;
-      html?: string;
-      headers?: Object;
-      attachments?: Object[];
-      mailComposer?: MailComposer;
-    }): void;
-  }
-
-  interface MailComposerOptions {
-    escapeSMTP: boolean;
-    encoding: string;
-    charset: string;
-    keepBcc: boolean;
-    forceEmbeddedImages: boolean;
-  }
-
-  var MailComposer: MailComposerStatic;
-  interface MailComposerStatic {
-    new(options: MailComposerOptions): MailComposer;
-  }
-  interface MailComposer {
-    addHeader(name: string, value: string): void;
-    setMessageOption(from: string, to: string, body: string, html: string): void;
-    streamMessage(): void;
-    pipe(stream: any /** fs.WriteStream **/ ): void;
   }
 }
 
@@ -1071,8 +839,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-
-
   module Meteor {
     /** Global props **/
     var isClient: boolean;
@@ -1257,7 +1023,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-
   module Meteor {
     /** Login **/
     interface LoginWithExternalServiceOptions {
@@ -1338,64 +1103,6 @@ declare module "meteor/meteor" {
     /** Pub/Sub **/
     function subscribe(name: string, ...args: any[]): Meteor.SubscriptionHandle;
     /** Pub/Sub **/
-  }
-}
-
-declare module Meteor {
-  /** Connection **/
-  interface Connection {
-    id: string;
-    close: Function;
-    onClose: Function;
-    clientAddress: string;
-    httpHeaders: Object;
-  }
-
-  function onConnection(callback: Function): void;
-  /** Connection **/
-
-  function publish(name: string, func: Function): void;
-}
-
-interface Subscription {
-  added(collection: string, id: string, fields: Object): void;
-  changed(collection: string, id: string, fields: Object): void;
-  connection: Meteor.Connection;
-  error(error: Error): void;
-  onStop(func: Function): void;
-  ready(): void;
-  removed(collection: string, id: string): void;
-  stop(): void;
-  userId: string;
-}
-
-declare module "meteor/meteor" {
-  module Meteor {
-    /** Connection **/
-    interface Connection {
-      id: string;
-      close: Function;
-      onClose: Function;
-      clientAddress: string;
-      httpHeaders: Object;
-    }
-
-    function onConnection(callback: Function): void;
-    /** Connection **/
-
-    function publish(name: string, func: Function): void;
-  }
-
-  interface Subscription {
-    added(collection: string, id: string, fields: Object): void;
-    changed(collection: string, id: string, fields: Object): void;
-    connection: Meteor.Connection;
-    error(error: Error): void;
-    onStop(func: Function): void;
-    ready(): void;
-    removed(collection: string, id: string): void;
-    stop(): void;
-    userId: string;
   }
 }
 
@@ -1617,28 +1324,6 @@ declare module "meteor/mongo" {
   }
 }
 
-declare module Mongo {
-  interface AllowDenyOptions {
-    insert?: (userId: string, doc: any) => boolean;
-    update?: (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
-    remove?: (userId: string, doc: any) => boolean;
-    fetch?: string[];
-    transform?: Function;
-  }
-}
-
-declare module "meteor/mongo" {
-  module Mongo {
-    interface AllowDenyOptions {
-      insert?: (userId: string, doc: any) => boolean;
-      update?: (userId: string, doc: any, fieldNames: string[], modifier: any) => boolean;
-      remove?: (userId: string, doc: any) => boolean;
-      fetch?: string[];
-      transform?: Function;
-    }
-  }
-}
-
 declare module Random {
   function id(numberOfChars?: number): string;
 
@@ -1700,7 +1385,6 @@ declare module Session {
 }
 
 declare module "meteor/session" {
-
   module Session {
     function equals(key: string, value: string | number | boolean | any): boolean;
 
@@ -1720,7 +1404,6 @@ interface TemplateStatic extends Blaze.TemplateStatic {
 }
 
 declare module "meteor/templating" {
-
   var Template: TemplateStatic;
   interface TemplateStatic extends Blaze.TemplateStatic {
     new(viewName?: string, renderFunction?: Function): Blaze.Template;
