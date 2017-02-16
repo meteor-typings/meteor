@@ -213,8 +213,6 @@ declare module Accounts {
 }
 
 declare module "meteor/accounts-base" {
-
-
   interface EmailFields {
     from?: () => string;
     subject?: (user: Meteor.User) => string;
@@ -387,7 +385,6 @@ declare module Blaze {
 }
 
 declare module "meteor/blaze" {
-
   module Blaze {
     var View: ViewStatic;
 
@@ -681,7 +678,6 @@ declare module DDPCommon {
 }
 
 declare module "meteor/ddp" {
-
   module DDP {
     interface DDPStatic {
       subscribe(name: string, ...rest: any[]): Meteor.SubscriptionHandle;
@@ -1071,8 +1067,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-
-
   module Meteor {
     /** Global props **/
     var isClient: boolean;
@@ -1257,7 +1251,6 @@ declare module Meteor {
 }
 
 declare module "meteor/meteor" {
-
   module Meteor {
     /** Login **/
     interface LoginWithExternalServiceOptions {
@@ -1355,6 +1348,8 @@ declare module Meteor {
   /** Connection **/
 
   function publish(name: string, func: Function): void;
+
+  function _debug(msg: any): void;
 }
 
 interface Subscription {
@@ -1384,6 +1379,8 @@ declare module "meteor/meteor" {
     /** Connection **/
 
     function publish(name: string, func: Function): void;
+
+    function _debug(msg: any): void;
   }
 
   interface Subscription {
@@ -1700,7 +1697,6 @@ declare module Session {
 }
 
 declare module "meteor/session" {
-
   module Session {
     function equals(key: string, value: string | number | boolean | any): boolean;
 
@@ -1720,7 +1716,6 @@ interface TemplateStatic extends Blaze.TemplateStatic {
 }
 
 declare module "meteor/templating" {
-
   var Template: TemplateStatic;
   interface TemplateStatic extends Blaze.TemplateStatic {
     new(viewName?: string, renderFunction?: Function): Blaze.Template;

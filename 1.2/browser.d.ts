@@ -599,6 +599,8 @@ declare module Meteor {
   /** Connection **/
 
   function publish(name: string, func: Function): void;
+
+  function _debug(msg: any): void;
 }
 
 interface Subscription {
