@@ -8,6 +8,7 @@ declare module HTTP {
     headers?: { [id: string]: string };
     timeout?: number;
     followRedirects?: boolean;
+    npmRequestOptions?: Object;
   }
 
   interface HTTPResponse {
