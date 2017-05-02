@@ -463,6 +463,9 @@ Accounts.emailTemplates.enrollAccount.text = function (user:any, url:string) {
 /**
  * From Meteor, Meteor._localStorage
  */
+Meteor._localStorage.setItem("foo", "bar");
+Meteor._localStorage.getItem("foo");
+Meteor._localStorage.removeItem("foo");
 
 /**
  * From Templates, Template.myTemplate.helpers section
