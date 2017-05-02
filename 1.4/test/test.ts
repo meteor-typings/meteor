@@ -461,6 +461,10 @@ Accounts.emailTemplates.enrollAccount.text = function (user:any, url:string) {
 };
 
 /**
+ * From Meteor, Meteor._localStorage
+ */
+
+/**
  * From Templates, Template.myTemplate.helpers section
  */
 Template['adminDashboard'].helpers({
