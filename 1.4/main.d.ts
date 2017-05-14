@@ -2115,11 +2115,30 @@ declare module "meteor/meteor" {
 
 declare module Accounts {
   function onLogout(func: Function): void;
+
+  function makeClientLoggedOut(): boolean | void;
 }
 
 declare module "meteor/accounts-base" {
   module Accounts {
     function onLogout(func: Function): void;
+
+    function makeClientLoggedOut(): boolean | void;
+  }
+}
+declare module "meteor/accounts-base" {
+  module Accounts {
+    function onLogout(func: Function): void;
+
+    function makeClientLoggedOut(): boolean | void;
+  }
+
+  module "meteor/accounts-base" {
+    module Accounts {
+      function onLogout(func: Function): void;
+
+      function makeClientLoggedOut(): boolean | void;
+    }
   }
 }
 
@@ -2130,5 +2149,30 @@ declare module Accounts {
 declare module "meteor/accounts-base" {
   module Accounts {
     function onLogout(func: (user: Meteor.User, connection: Meteor.Connection) => void): void;
+  }
+}
+
+declare module Meteor {
+  /** Local storage **/
+  var _localStorage: LocalStorage;
+  interface LocalStorage {
+    _data: any;
+    getItem(key: any): any;
+    removeItem(key: any): void;
+    setItem(key: any, value: any): any;
+  }
+  /** Local storage **/
+}
+declare module "meteor/meteor" {
+  module Meteor {
+    /** Local storage **/
+    var _localStorage: LocalStorage;
+    interface LocalStorage {
+      _data: any;
+      getItem(key: any): any;
+      removeItem(key: any): void;
+      setItem(key: any, value: any): any;
+    }
+    /** Local storage **/
   }
 }
