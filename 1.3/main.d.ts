@@ -880,6 +880,7 @@ declare module HTTP {
     };
     timeout?: number;
     followRedirects?: boolean;
+    npmRequestOptions?: Object;
   }
 
   interface HTTPResponse {
@@ -930,6 +931,7 @@ declare module "meteor/http" {
       };
       timeout?: number;
       followRedirects?: boolean;
+      npmRequestOptions?: Object;
     }
 
     interface HTTPResponse {
