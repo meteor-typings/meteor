@@ -11,7 +11,7 @@ declare module Mongo {
 
   var Collection: CollectionStatic;
   interface CollectionStatic {
-    new <T>(name: string, options?: {
+    new <T>(name: string | null, options?: {
       connection?: Object;
       idGeneration?: string;
       transform?: Function;
