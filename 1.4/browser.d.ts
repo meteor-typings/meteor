@@ -1121,7 +1121,7 @@ declare module Mongo {
 
   var Collection: CollectionStatic;
   interface CollectionStatic {
-    new < T > (name: string, options?: {
+    new < T > (name: string | null, options?: {
       connection?: Object;
       idGeneration?: string;
       transform?: Function;
@@ -1203,7 +1203,7 @@ declare module Mongo {
   interface Cursor < T > {
     count(applySkipLimit?: boolean): number;
     fetch(): Array < T > ;
-    forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg?: any): void;
+    forEach(callback: (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg?: any): void;
     map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg?: any): Array < U > ;
     observe(callbacks: ObserveCallbacks): Meteor.LiveQueryHandle;
     observeChanges(callbacks: ObserveChangesCallbacks): Meteor.LiveQueryHandle;
@@ -1230,7 +1230,7 @@ declare module "meteor/mongo" {
 
     var Collection: CollectionStatic;
     interface CollectionStatic {
-      new < T > (name: string, options?: {
+      new < T > (name: string | null, options?: {
         connection?: Object;
         idGeneration?: string;
         transform?: Function;
@@ -1312,7 +1312,7 @@ declare module "meteor/mongo" {
     interface Cursor < T > {
       count(applySkipLimit?: boolean): number;
       fetch(): Array < T > ;
-      forEach(callback: < T > (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg?: any): void;
+      forEach(callback: (doc: T, index: number, cursor: Cursor < T > ) => void, thisArg?: any): void;
       map < U > (callback: (doc: T, index: number, cursor: Cursor < T > ) => U, thisArg?: any): Array < U > ;
       observe(callbacks: ObserveCallbacks): Meteor.LiveQueryHandle;
       observeChanges(callbacks: ObserveChangesCallbacks): Meteor.LiveQueryHandle;

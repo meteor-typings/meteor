@@ -1,6 +1,6 @@
 {
   "name": "meteor-typings",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Type definitions for Meteor",
   "scripts": {
     "build": "rimraf 1.4/out 1.3/out 1.2/out && gulp build",
